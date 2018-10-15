@@ -2,47 +2,46 @@
 
 Shift_Or::Shift_Or()
 {
-    for (unsigned int i = 0; i < 128; i++){
+    for (unsigned int i = 0; i < AB_SIZE; i++)
+    {
         this->ab += char(i);
     }
 }
 
-unsigned int Shift_Or::find(std::string text, std::string pat, std::map<char, uint_fast64_t> c_mask)
+unsigned int Shift_Or::find(std::string text, std::string pat)
 {
     // unsigned int n = text.size();
     unsigned int m = pat.size();
     uint_fast64_t S = ~uint_fast64_t(0) >> (64 - m);
     uint_fast64_t msb = uint_fast64_t(1) << (m - 1);
-    std::map<char, uint_fast64_t> C;
     unsigned int qtd = 0;
-    if (c_mask.size() < 1)
+    if (this->c_mask.size() < 1)
     {
-        C = this->char_mask(pat, m);
+        this->set_char_mask(pat, m);
     }
-    else
-    {
-        C = c_mask;
-    }
+
     #if DEBUG
-    std::cout << "n: " << n << std::endl;
-    std::cout << "m: " << m << std::endl;
+    // std::cout << "n   : " << n << std::endl;
+    std::cout << "m   : " << m << std::endl;
+    std::cout << "AB  : " << this->c_mask.size() << std::endl;
     std::bitset<64> S_b(S);
     std::bitset<64> msb_b(msb);
     std::cout << "S   : " << S_b << std::endl;
     std::cout << "msb : " << msb_b << std::endl;
 
-    for (std::pair<char, uint_fast64_t> b : C){
-        std::bitset<64> mask(b.second);
-        std::cout << b.first << "   : " << mask << std::endl;
-    }
+    for (unsigned int i = 0; i < this->c_mask.size(); i++)
+    {
+        std::bitset<64> mask(this->c_mask[i]);
+        std::cout << char(i) << "   : " << mask << std::endl;
+        }
     #endif
 
     for (char& s : text)
     {
-        S = ((S << 1) | C[s]) & (~uint_fast64_t(0) >> (64 - m));
+        S = ((S << 1) | this->c_mask[int(s)]) & (~uint_fast64_t(0) >> (64 - m));
         #if DEBUG
-        std::bitset<64> s_b(S);
-        std::cout << "S[" << s << "]: " << s_b << std::endl;
+            std::bitset<64> s_b(S);
+            std::cout << "S[" << s << "]: " << s_b << std::endl;
         #endif
         if (S < msb)
         {
@@ -52,22 +51,22 @@ unsigned int Shift_Or::find(std::string text, std::string pat, std::map<char, ui
     return qtd;
 }
 
-std::map<char, uint_fast64_t> Shift_Or::char_mask(std::string pat, unsigned int m)
+void Shift_Or::set_char_mask(std::string pat, int m)
 {
+    if (m == -1){
+        m = pat.size();
+    }
     uint_fast64_t pos_mask = (~uint_fast64_t(0) - 1);
-    std::map<char, uint_fast64_t> C;
     uint_fast64_t one = uint_fast64_t(1);
 
     for (char s : this->ab)
     {
-        C[s] = ~uint_fast64_t(0) >> (64 - m);
+        this->c_mask.push_back(~uint_fast64_t(0) >> (64 - m));
     }
 
     for (char& s : pat)
     {
-        C[s] = C[s] & pos_mask & (~uint_fast64_t(0) >> (64 - m));
+        this->c_mask[int(s)] = (this->c_mask[uint_fast64_t(s)]) & pos_mask & (~uint_fast64_t(0) >> (64 - m));
         pos_mask = (pos_mask << 1) | one;
     }
-
-    return C;
 }

@@ -1,6 +1,9 @@
 #include <iostream>
+#include "shift_or.h"
 
 int main (int argc, char* argv[]){
-    std::cout << "PCC" << std::endl;
+    Shift_Or a;
+    unsigned int q = a.find("abcabab", "aba");
+    std::cout << q << std::endl;
     return 0;
 }

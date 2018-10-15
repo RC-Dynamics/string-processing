@@ -14,12 +14,13 @@ OBJ=$(subst .cpp,.o,$(subst src,generated_files,$(C_SOURCE)))
 CC=g++
 
 # Flags for compiler
-CC_FLAGS=-std=c++11 \
+CC_FLAGS= -std=c++11\
 		 -c         \
          -W         \
          -Wall      \
-         -ansi      \
-         -pedantic
+		 -O3        \
+         -pedantic  \
+		 -flto
 
 RM = rm -rf
 

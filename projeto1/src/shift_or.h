@@ -16,11 +16,11 @@
 class Shift_Or{
     public:
         Shift_Or();
-        unsigned int find(std::string text, std::string pat);
+        unsigned int find(std::string text, std::string pat, std::map<char, uint_fast64_t> c_mask = std::map<char, uint_fast64_t>());
+        std::map<char, uint_fast64_t> char_mask(std::string pat, unsigned int m);
 
     private:
         std::string ab;
-        std::map<char, uint_fast64_t> char_mask(std::string pat, unsigned int m);
 };
 
 

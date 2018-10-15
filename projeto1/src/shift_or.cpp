@@ -7,15 +7,22 @@ Shift_Or::Shift_Or()
     }
 }
 
-unsigned int Shift_Or::find(std::string text, std::string pat)
+unsigned int Shift_Or::find(std::string text, std::string pat, std::map<char, uint_fast64_t> c_mask)
 {
     // unsigned int n = text.size();
     unsigned int m = pat.size();
     uint_fast64_t S = ~uint_fast64_t(0) >> (64 - m);
     uint_fast64_t msb = uint_fast64_t(1) << (m - 1);
+    std::map<char, uint_fast64_t> C;
     unsigned int qtd = 0;
-    std::map<char, uint_fast64_t> C = this->char_mask(pat, m);
-
+    if (c_mask.size() < 1)
+    {
+        C = this->char_mask(pat, m);
+    }
+    else
+    {
+        C = c_mask;
+    }
     #if DEBUG
     std::cout << "n: " << n << std::endl;
     std::cout << "m: " << m << std::endl;

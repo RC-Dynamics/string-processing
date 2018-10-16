@@ -8,14 +8,14 @@ Wu_Manber::Wu_Manber()
     }
 }
 
-unsigned int Wu_Manber::find(std::string text, std::string pat, unsigned int r)
+std::vector<unsigned int> Wu_Manber::find(std::string text, std::string pat, unsigned int r)
 {
     // unsigned int n = text.size();
     unsigned int m = pat.size();
     std::vector<uint_fast64_t> S;
     uint_fast64_t S_1, S_2;
     uint_fast64_t msb = uint_fast64_t(1) << (m - 1);
-    unsigned int qtd = 0;
+    std::vector<unsigned int> qtd;
     if (this->c_mask.size() < 1)
     {
         this->set_char_mask(pat, m);
@@ -45,18 +45,18 @@ unsigned int Wu_Manber::find(std::string text, std::string pat, unsigned int r)
     // }
 #endif
 
-    for (char& s : text)
+    for (unsigned int i = 0; i < text.size(); i++)
     {
-        S[0] = ((S[0] << 1) | this->c_mask[int(s)]) & (~uint_fast64_t(0) >> (64 - m));
+        S[0] = ((S[0] << 1) | this->c_mask[int(text[i])]) & (~uint_fast64_t(0) >> (64 - m));
         S_1 = S[0];
         for (unsigned int q = 1; q <= r; q++) {
             S_2 = S[q];
-            S[q] = ((S[q] << 1) | this->c_mask[int(s)]) & (S[q - 1] << 1) & (S_1 << 1) & (S_1);
+            S[q] = ((S[q] << 1) | this->c_mask[int(text[i])]) & (S[q - 1] << 1) & (S_1 << 1) & (S_1);
             S_1 = S_2;
         }
         if (S[r] < msb)
         {
-            qtd++;
+            qtd.push_back(i);
         }
 #if DEBUG
         std::cout << std::endl << s << std::endl;

@@ -18,7 +18,7 @@ class Shift_Or
 {
     public:
         Shift_Or();
-        unsigned int find(std::string text, std::string pat);
+        std::vector<unsigned int> find(std::string text, std::string pat);
         void set_char_mask(std::string pat, int m = -1);
 
     private:

@@ -8,13 +8,13 @@ Shift_Or::Shift_Or()
     }
 }
 
-unsigned int Shift_Or::find(std::string text, std::string pat)
+std::vector<unsigned int> Shift_Or::find(std::string text, std::string pat)
 {
     // unsigned int n = text.size();
     unsigned int m = pat.size();
     uint_fast64_t S = ~uint_fast64_t(0) >> (64 - m);
     uint_fast64_t msb = uint_fast64_t(1) << (m - 1);
-    unsigned int qtd = 0;
+    std::vector<unsigned int> qtd;
     if (this->c_mask.size() < 1)
     {
         this->set_char_mask(pat, m);
@@ -36,16 +36,16 @@ unsigned int Shift_Or::find(std::string text, std::string pat)
         }
     #endif
 
-    for (char& s : text)
+    for (unsigned int i = 0; i < text.size(); i++)
     {
-        S = ((S << 1) | this->c_mask[int(s)]) & (~uint_fast64_t(0) >> (64 - m));
+        S = ((S << 1) | this->c_mask[int(text[i])]) & (~uint_fast64_t(0) >> (64 - m));
         #if DEBUG
             std::bitset<64> s_b(S);
             std::cout << "S[" << s << "]: " << s_b << std::endl;
         #endif
         if (S < msb)
         {
-            qtd++;
+            qtd.push_back(i);
         }
     }
     return qtd;

@@ -16,9 +16,9 @@ class Sellers
 {
     public:
         Sellers();
-        unsigned int find(std::string text, std::string pat, int r);
+        std::vector<unsigned int> find(std::string text, std::string pat, int r);
 
-    private:
+      private:
         int phi(char p, char s);
 };
 

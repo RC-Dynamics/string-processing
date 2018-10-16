@@ -18,7 +18,7 @@ class Wu_Manber
 {
     public:
         Wu_Manber();
-        unsigned int find(std::string text, std::string pat, unsigned int r);
+        std::vector<unsigned int> find(std::string text, std::string pat, unsigned int r);
         void set_char_mask(std::string pat, int m = -1);
 
     private:

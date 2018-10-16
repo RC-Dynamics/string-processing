@@ -10,7 +10,7 @@ Shift_Or::Shift_Or()
 
 std::vector<unsigned int> Shift_Or::find(std::string text, std::string pat)
 {
-    // unsigned int n = text.size();
+    unsigned int n = text.size();
     unsigned int m = pat.size();
     uint_fast64_t S = ~uint_fast64_t(0) >> (64 - m);
     uint_fast64_t msb = uint_fast64_t(1) << (m - 1);
@@ -36,7 +36,7 @@ std::vector<unsigned int> Shift_Or::find(std::string text, std::string pat)
         }
     #endif
 
-    for (unsigned int i = 0; i < text.size(); i++)
+    for (unsigned int i = 0; i < n; i++)
     {
         S = ((S << 1) | this->c_mask[int(text[i])]) & (~uint_fast64_t(0) >> (64 - m));
         #if DEBUG

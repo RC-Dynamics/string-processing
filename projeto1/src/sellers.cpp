@@ -6,7 +6,7 @@ Sellers::Sellers()
 
 std::vector<unsigned int> Sellers::find(std::string text, std::string pat, int r)
 {
-    // unsigned int n = text.size();
+    unsigned int n = text.size();
     unsigned int m = pat.size();
     std::vector<unsigned int> qtd;
     unsigned int last = 1;
@@ -21,8 +21,8 @@ std::vector<unsigned int> Sellers::find(std::string text, std::string pat, int r
     D.push_back(D_aux);
 
 #if DEBUG
-    // std::cout << "n   : " << n << std::endl;
-    // std::cout << "m   : " << m << std::endl;
+    std::cout << "n   : " << n << std::endl;
+    std::cout << "m   : " << m << std::endl;
 
     std::cout << "D[0]:";
     for (unsigned int i = 0; i < D[0].size(); i++)
@@ -41,7 +41,7 @@ std::vector<unsigned int> Sellers::find(std::string text, std::string pat, int r
     std::cout << std::endl;
 #endif
 
-    for (unsigned int j = 0; j < text.size(); j++)
+    for (unsigned int j = 0; j < n; j++)
     {
         D[last][0] = 0;
         for (unsigned int i = 1; i <= m; i++)

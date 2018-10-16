@@ -10,7 +10,7 @@ Wu_Manber::Wu_Manber()
 
 std::vector<unsigned int> Wu_Manber::find(std::string text, std::string pat, unsigned int r)
 {
-    // unsigned int n = text.size();
+    unsigned int n = text.size();
     unsigned int m = pat.size();
     std::vector<uint_fast64_t> S;
     uint_fast64_t S_1, S_2;
@@ -26,7 +26,7 @@ std::vector<unsigned int> Wu_Manber::find(std::string text, std::string pat, uns
     }
 
 #if DEBUG
-    // std::cout << "n   : " << n << std::endl;
+    std::cout << "n   : " << n << std::endl;
     std::cout << "m   : " << m << std::endl;
     std::cout << "AB  : " << this->c_mask.size() << std::endl;
     std::cout << "S   : " << S.size() << std::endl;
@@ -45,7 +45,7 @@ std::vector<unsigned int> Wu_Manber::find(std::string text, std::string pat, uns
     // }
 #endif
 
-    for (unsigned int i = 0; i < text.size(); i++)
+    for (unsigned int i = 0; i < n; i++)
     {
         S[0] = ((S[0] << 1) | this->c_mask[int(text[i])]) & (~uint_fast64_t(0) >> (64 - m));
         S_1 = S[0];

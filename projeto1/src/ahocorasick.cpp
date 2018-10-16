@@ -74,10 +74,10 @@ void Ahocorasick::build_fail(std::vector<std::string> patts, int n) {
     }
 }
 
-std::vector<std::vector<uint_fast16_t>> Ahocorasick::find(std::string text, std::vector<std::string> patts) {
+std::vector<std::vector<uint_fast16_t> > Ahocorasick::find(std::string text, std::vector<std::string> patts) {
     int n = text.size();
     std::vector<uint_fast16_t> m;
-    std::vector<std::vector<uint_fast16_t>> occ;
+    std::vector<std::vector<uint_fast16_t> > occ;
     for (int i = 0; i != patts.size(); i++) {
         m.push_back(patts[i].size());
         std::vector<uint_fast16_t> a;

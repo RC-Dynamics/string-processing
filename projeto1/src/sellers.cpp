@@ -20,7 +20,7 @@ std::vector<unsigned int> Sellers::find(std::string text, std::string pat, int r
     D.push_back(D_aux);
     D.push_back(D_aux);
 
-#if DEBUG
+#if DEBUG_SELLERS
     std::cout << "n   : " << n << std::endl;
     std::cout << "m   : " << m << std::endl;
 
@@ -52,7 +52,7 @@ std::vector<unsigned int> Sellers::find(std::string text, std::string pat, int r
         {
             qtd.push_back(j);
         }
-#if DEBUG
+#if DEBUG_SELLERS
         std::cout << "D[0]:";
         for (unsigned int i = 0; i < D[0].size(); i++)
         {

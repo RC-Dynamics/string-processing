@@ -6,8 +6,8 @@
 #include <vector>
 #include <algorithm>
 
-#define DEBUG 0
-#if DEBUG
+#define DEBUG_SELLERS 0
+#if DEBUG_SELLERS
 #include <utility>
 #include <iostream>
 #endif

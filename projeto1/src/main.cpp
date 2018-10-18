@@ -8,9 +8,9 @@
 int main (int argc, char* argv[]){
     Shift_Or a;
     a.set_char_mask("aba");
-    std::vector<unsigned int> q_s = a.find("abcababa", "aba");
-    std::cout << "Shift_Or : " << q_s.size() << " - [";
-    for (unsigned int q : q_s)
+    std::vector<unsigned int> q_q = a.find("abcababa", "aba");
+    std::cout << "Shift_Or : " << q_q.size() << " - [";
+    for (unsigned int q : q_q)
     {
         std::cout << q << ", ";
     }

@@ -5,10 +5,10 @@
 #include <stdint.h>
 #include <vector>
 
-#define AB_SIZE 128
+#define AB_SIZE_SHIFT_OR 128
 
-#define DEBUG 0
-#if DEBUG
+#define DEBUG_SHIFT_OR 0
+#if DEBUG_SHIFT_OR
 #include <utility>
 #include <bitset>
 #include <iostream>

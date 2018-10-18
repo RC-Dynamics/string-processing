@@ -10,9 +10,7 @@
 #include <queue>
 #include <utility>
 
-#define AB_SIZE 128
-
-
+#define AB_SIZE_AHOCORASICK 128
 
 class Ahocorasick
 {

@@ -30,7 +30,7 @@ void Ahocorasick::print_fsm(std::unordered_map<std::pair<uint_fast16_t, char>, u
 
 Ahocorasick::Ahocorasick()
 {
-    for (unsigned int i = 0; i < AB_SIZE; i++)
+    for (unsigned int i = 0; i < AB_SIZE_AHOCORASICK; i++)
     {
         this->ab += char(i);
     }

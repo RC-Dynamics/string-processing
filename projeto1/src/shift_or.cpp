@@ -2,7 +2,7 @@
 
 Shift_Or::Shift_Or()
 {
-    for (unsigned int i = 0; i < AB_SIZE; i++)
+    for (unsigned int i = 0; i < AB_SIZE_SHIFT_OR; i++)
     {
         this->ab += char(i);
     }
@@ -20,7 +20,7 @@ std::vector<unsigned int> Shift_Or::find(std::string text, std::string pat)
         this->set_char_mask(pat, m);
     }
 
-    #if DEBUG
+#if DEBUG_SHIFT_OR
     // std::cout << "n   : " << n << std::endl;
     std::cout << "m   : " << m << std::endl;
     std::cout << "AB  : " << this->c_mask.size() << std::endl;
@@ -34,15 +34,15 @@ std::vector<unsigned int> Shift_Or::find(std::string text, std::string pat)
         std::bitset<64> mask(this->c_mask[i]);
         std::cout << char(i) << "   : " << mask << std::endl;
         }
-    #endif
+#endif
 
     for (unsigned int i = 0; i < n; i++)
     {
         S = ((S << 1) | this->c_mask[int(text[i])]) & (~uint_fast64_t(0) >> (64 - m));
-        #if DEBUG
-            std::bitset<64> s_b(S);
-            std::cout << "S[" << s << "]: " << s_b << std::endl;
-        #endif
+#if DEBUG_SHIFT_OR
+        std::bitset<64> s_b(S);
+        std::cout << "S[" << text[i] << "]: " << s_b << std::endl;
+#endif
         if (S < msb)
         {
             qtd.push_back(i);

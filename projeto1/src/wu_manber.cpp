@@ -48,8 +48,8 @@ std::vector<unsigned int> Wu_Manber::find(std::string text, std::string pat, uns
 
     for (unsigned int i = 0; i < n; i++)
     {
-        S[0] = ((S[0] << 1) | this->c_mask[int(text[i])]) & (~uint_fast64_t(0) >> (64 - m));
         S_1 = S[0];
+        S[0] = ((S[0] << 1) | this->c_mask[int(text[i])]) & (~uint_fast64_t(0) >> (64 - m));
         for (unsigned int q = 1; q <= r; q++) {
             S_2 = S[q];
             S[q] = ((S[q] << 1) | this->c_mask[int(text[i])]) & (S[q - 1] << 1) & (S_1 << 1) & (S_1);

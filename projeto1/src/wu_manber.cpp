@@ -2,7 +2,7 @@
 
 Wu_Manber::Wu_Manber()
 {
-    for (unsigned int i = 0; i < AB_SIZE; i++)
+    for (unsigned int i = 0; i < AB_SIZE_WU_MANBER; i++)
     {
         this->ab += char(i);
     }
@@ -21,11 +21,12 @@ std::vector<unsigned int> Wu_Manber::find(std::string text, std::string pat, uns
         this->set_char_mask(pat, m);
     }
 
-    for (unsigned int i = 0; i <= r; i ++){
-        S.push_back(~uint_fast64_t(0) >> (64 - m));
+    S.push_back(~uint_fast64_t(0) >> (64 - m));
+    for (unsigned int i = 1; i <= r; i ++){
+        S.push_back((S[i - 1] << 1) & S[0]);
     }
 
-#if DEBUG
+#if DEBUG_WU_MANBER
     std::cout << "n   : " << n << std::endl;
     std::cout << "m   : " << m << std::endl;
     std::cout << "AB  : " << this->c_mask.size() << std::endl;
@@ -52,18 +53,19 @@ std::vector<unsigned int> Wu_Manber::find(std::string text, std::string pat, uns
         for (unsigned int q = 1; q <= r; q++) {
             S_2 = S[q];
             S[q] = ((S[q] << 1) | this->c_mask[int(text[i])]) & (S[q - 1] << 1) & (S_1 << 1) & (S_1);
+            // S[q] = ((S[q - 1] << 1) | this->c_mask[int(text[i])]) & (S[q] << 1) & (S_1 << 1) & (S_1);
             S_1 = S_2;
         }
         if (S[r] < msb)
         {
             qtd.push_back(i);
         }
-#if DEBUG
-        std::cout << std::endl << s << std::endl;
-        for (unsigned int i = 0; i <= r; i++)
+#if DEBUG_WU_MANBER
+        std::cout << std::endl << text[i] << std::endl;
+        for (unsigned int j = 0; j <= r; j++)
         {
-            std::bitset<64> S_b(S[i]);
-            std::cout << "S[" << i << "]: " << S_b << std::endl;
+            std::bitset<64> S_b(S[j]);
+            std::cout << "S[" << j << "]: " << S_b << std::endl;
         }
 #endif
     }

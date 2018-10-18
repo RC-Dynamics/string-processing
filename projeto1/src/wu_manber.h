@@ -5,10 +5,10 @@
 #include <vector>
 #include <stdint.h>
 
-#define AB_SIZE 128
+#define AB_SIZE_WU_MANBER 128
 
-#define DEBUG 0
-#if DEBUG
+#define DEBUG_WU_MANBER 0
+#if DEBUG_WU_MANBER
 #include <utility>
 #include <bitset>
 #include <iostream>

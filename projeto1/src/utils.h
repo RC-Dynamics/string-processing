@@ -1,12 +1,13 @@
 #include <getopt.h>
 #include <vector>
-#include <string>
+#include <string.h>
+#include <fstream>
 
 #define DEBUG_UTILS 0
 
 #define AHO "aho-corasick"
-#define SHI "shiftOr"
-#define WU "wuManber"
+#define SHI "shift-or"
+#define WU "wu-manber"
 #define SEL "sellers"
 
 enum e_algrthm {
@@ -52,6 +53,7 @@ namespace utils {
         printf("\t                               If no algoritmh chose, ...  \n");
         printf("\t--pattern   -p ARQUIVO       Search each pattern on file, one per line\n");
         printf("\t--help      -h               Show help\n");
+        printf("Made by: Lucas Cavalcnati and Roberto Fernandes  - {lhcs, rcf6}@cin.ufpe.br\n");
     }
 
     bool getArguments(argmnts *arg, int argc, char *argv[])
@@ -76,8 +78,10 @@ namespace utils {
             case 'h':
                 print_help();
                 return true;
+                break;
             default:
-                abort();
+                printf("No option selected \n");
+                exit(0);
             }
         }
 

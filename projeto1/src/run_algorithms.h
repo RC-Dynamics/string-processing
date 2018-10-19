@@ -1,6 +1,6 @@
-#include <fstream>
-
+// #include <fstream>
 #include "utils.h"
+#include "FileParser.h"
 
 #include "shift_or.h"
 #include "wu_manber.h"
@@ -15,21 +15,30 @@ namespace runner
     {
         uint count = 0;
         uint last_count = 0;
+
         for (uint i = 0; i < arg.txt_files.size(); i++)
         {
-            std::ifstream f(arg.txt_files[i]);
-            std::string line;
+            // std::ifstream f(arg.txt_files[i]);            
+            // std::string line;
             std::vector<std::vector<uint_fast16_t>> occ;
-            while (getline(f, line))
+
+            FileParser fp(arg.txt_files[i]);
+            const char *line;
+            // while (getline(f, line))
+            while((line = fp.readLine()) != NULL)
             {
-                occ = aho->find(line, arg.patterns);
+                occ = aho->find(std::string(line), arg.patterns);
                 for (auto a : occ)
                 {
-                    count += a.size();
+                    if(a.size() > 0){
+                        count++;
+                        break;
+                    }
+
                 }
                 if (!arg.count_only && last_count != count)
                 {
-                    printf("%s\n", line.c_str());
+                    printf("%s\n", line);
                 }
                 last_count = count;
             }
@@ -43,16 +52,21 @@ namespace runner
             uint last_count = 0;
             for (uint i = 0; i < arg.txt_files.size(); i++)
             {
-                std::ifstream f(arg.txt_files[i]);
-                std::string line;
+                // std::ifstream f(arg.txt_files[i]);
+                // std::string line;
                 std::vector<unsigned int> occ;
-                while (getline(f, line))
+
+                FileParser fp(arg.txt_files[i]);
+                const char *line;
+                // while (getline(f, line))
+                while ((line = fp.readLine()) != NULL)
                 {
-                    occ = shi->find(line, arg.patterns[0]);
-                    count += occ.size();
+                    occ = shi->find(std::string(line), arg.patterns[0]);
+                    if(occ.size() > 0)
+                        count++;
                     if (!arg.count_only && last_count != count)
                     {
-                        printf("%s\n", line.c_str());
+                        printf("%s\n", line);
                     }
                     last_count = count;
                 }
@@ -66,16 +80,20 @@ namespace runner
             uint last_count = 0;
             for (uint i = 0; i < arg.txt_files.size(); i++)
             {
-                std::ifstream f(arg.txt_files[i]);
-                std::string line;
+                // std::ifstream f(arg.txt_files[i]);
+                // std::string line;
                 std::vector<unsigned int> occ;
-                while (getline(f, line))
+                FileParser fp(arg.txt_files[i]);
+                const char *line;
+                // while (getline(f, line))
+                while ((line = fp.readLine()) != NULL)
                 {
                     occ = wu->find(line, arg.patterns[0], err);
-                    count += occ.size();
+                    if (occ.size() > 0)
+                        count++;
                     if (!arg.count_only && last_count != count)
                     {
-                        printf("%s\n", line.c_str());
+                        printf("%s\n", line);
                     }
                     last_count = count;
                 }
@@ -89,16 +107,21 @@ namespace runner
             uint last_count = 0;
             for (uint i = 0; i < arg.txt_files.size(); i++)
             {
-                std::ifstream f(arg.txt_files[i]);
-                std::string line;
+                // std::ifstream f(arg.txt_files[i]);
+                // std::string line;
                 std::vector<unsigned int> occ;
-                while (getline(f, line))
+
+                FileParser fp(arg.txt_files[i]);
+                const char *line;
+                // while (getline(f, line))
+                while ((line = fp.readLine()) != NULL)
                 {
                     occ = sel->find(line, arg.patterns[0], err);
-                    count += occ.size();
+                    if (occ.size() > 0)
+                        count++;
                     if (!arg.count_only && last_count != count)
                     {
-                        printf("%s\n", line.c_str());
+                        printf("%s\n", line);
                     }
                     last_count = count;
                 }

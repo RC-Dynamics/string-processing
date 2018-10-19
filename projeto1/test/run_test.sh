@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 files=`cat files.txt`
 errors=`cat errors.txt`
 algo=$1
@@ -13,6 +13,8 @@ do
 done < patterns.txt
 
 `unset IFS`
+IFS=" $(echo t | tr t \\t)
+"
 
 for file in $files
 do
@@ -28,9 +30,9 @@ do
             `echo "$algo, $file, $pat, $TIMEDIFF, $count" >> $result`
         elif [ "$algo" = "grep" ]
         then
-            echo "grep -c $pat ../data/$file"
+            echo "grep -c "$pat" ../data/$file"
             STARTTIME=`date +%s.%N`
-            count=`grep -c $pat ../data/$file`
+            count=`grep -c "$pat" ../data/$file`
             ENDTIME=`date +%s.%N`
             TIMEDIFF=`echo "$ENDTIME - $STARTTIME" | bc | awk -F"." '{print $1"."substr($2,1,3)}'`
             `echo "grep, $file, $pat, $TIMEDIFF, $count" >> $result`

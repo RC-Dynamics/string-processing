@@ -48,14 +48,3 @@ do
         done
     done
 done
-
-# for algo in "wu-manber" "sellers"
-# do
-# echo "Hello world $algo"
-# done
-
-# STARTTIME=`date +%s.%N`
-# sleep 2.02
-# ENDTIME=`date +%s.%N`
-# TIMEDIFF=`echo "$ENDTIME - $STARTTIME" | bc | awk -F"." '{print $1"."substr($2,1,3)}'`
-# echo "$TIMEDIFF"

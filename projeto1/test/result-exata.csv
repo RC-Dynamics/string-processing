@@ -1,0 +1,6 @@
+aho-corasick, shakespeare.txt, love, .141, 2484
+shift-or, shakespeare.txt, love, .014, 2484
+grep, shakespeare.txt, love, .008, 2484
+aho-corasick, shakespeare.txt, unworthy, .141, 31
+shift-or, shakespeare.txt, unworthy, .014, 31
+grep, shakespeare.txt, unworthy, .004, 31

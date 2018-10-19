@@ -80,7 +80,7 @@ void Wu_Manber::set_char_mask(std::string pat, int m)
     uint_fast64_t pos_mask = (~uint_fast64_t(0) - 1);
     uint_fast64_t one = uint_fast64_t(1);
 
-    for (char s : this->ab)
+    for (unsigned int i = 0; i < (this->ab).size(); i++)
     {
         this->c_mask.push_back(~uint_fast64_t(0) >> (64 - m));
     }

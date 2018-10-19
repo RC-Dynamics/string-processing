@@ -1,5 +1,5 @@
-
 #include <string>
+#include <string.h>
 
 class FileParser {
     public:

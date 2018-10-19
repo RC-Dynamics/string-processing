@@ -3,6 +3,7 @@
 
 #include <string>
 #include <sstream>
+#include <fstream>
 #include <iostream>
 #include <stdint.h>
 #include <vector>
@@ -20,14 +21,15 @@ class Ahocorasick
         Ahocorasick();
         std::vector<std::vector<uint_fast16_t> > find(std::string text, std::vector<std::string> patts);
         void build_fsm(std::vector<std::string> patts);
-    private:
-      struct pair_hash
-      {
-          template <class T1, class T2>
-          std::size_t operator()(const std::pair<T1, T2> &pair) const
-          {
-              return std::hash<T1>()(pair.first) ^ std::hash<T2>()(pair.second);
-          }
+
+      private:
+        struct pair_hash
+        {
+            template <class T1, class T2>
+            std::size_t operator()(const std::pair<T1, T2> &pair) const
+            {
+                return std::hash<T1>()(pair.first) ^ std::hash<T2>()(pair.second);
+            }
       };
       std::string ab;
       std::vector<uint_fast16_t> f;

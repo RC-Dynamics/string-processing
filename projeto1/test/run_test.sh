@@ -1,50 +1,55 @@
 #!/bin/sh
-patterns=`cat patterns.txt`
 files=`cat files.txt`
 errors=`cat errors.txt`
-result_exata='result-exata.csv'
-result_aprox='result-aprox.csv'
-`rm $result_exata && rm $result_aprox && touch $result_exata && touch $result_aprox `
+algo=$1
+result="result-$algo.csv"
+`rm $result && touch $result`
 
 for file in $files
 do
-    for pat in $patterns
+    IFS=''
+    while read pat
     do
-        for algo in "aho-corasick" "shift-or"
-        do
+        if [ "$algo" = "aho-corasick" -o "$algo" = "shift-or" ]
+        then
+            echo "./../bin/pmt -a $algo -c $pat ../data/$file"
             STARTTIME=`date +%s.%N`
             count=`./../bin/pmt -a $algo -c $pat ../data/$file`
             ENDTIME=`date +%s.%N`
             TIMEDIFF=`echo "$ENDTIME - $STARTTIME" | bc | awk -F"." '{print $1"."substr($2,1,3)}'`
-            `echo "$algo, $file, $pat, $TIMEDIFF, $count" >> $result_exata`
-        done
-        STARTTIME=`date +%s.%N`
-        count=`grep -c $pat ../data/$file`
-        ENDTIME=`date +%s.%N`
-        TIMEDIFF=`echo "$ENDTIME - $STARTTIME" | bc | awk -F"." '{print $1"."substr($2,1,3)}'`
-        `echo "grep, $file, $pat, $TIMEDIFF, $count" >> $result_exata`
-    done
-done
-
-for file in $files
-do
-    for pat in $patterns
-    do
-        for error in $errors
-        do
-            for algo in "wu-manber" "sellers"
-            do
-                STARTTIME=`date +%s.%N`
-                count=`./../bin/pmt -a $algo -c -e $error $pat ../data/$file`
-                ENDTIME=`date +%s.%N`
-                TIMEDIFF=`echo "$ENDTIME - $STARTTIME" | bc | awk -F"." '{print $1"."substr($2,1,3)}'`
-                `echo "$algo, $file, $pat, $error, $TIMEDIFF, $count" >> $result_aprox`
-            done
+            `echo "$algo, $file, $pat, $TIMEDIFF, $count" >> $result`
+        elif [ "$algo" = "grep" ]
+        then
+            echo "grep -c $pat ../data/$file"
             STARTTIME=`date +%s.%N`
-            count=`agrep -c -d '\n' -I1 -D1 -S1 -$error $pat ../data/$file`
+            count=`grep -c $pat ../data/$file`
             ENDTIME=`date +%s.%N`
             TIMEDIFF=`echo "$ENDTIME - $STARTTIME" | bc | awk -F"." '{print $1"."substr($2,1,3)}'`
-            `echo "agrep, $file, $pat, $error, $TIMEDIFF, $count" >> $result_aprox`
-        done
-    done
+            `echo "grep, $file, $pat, $TIMEDIFF, $count" >> $result`
+        else
+            for error in $errors
+            do
+                if [ "$algo" = "wu-manber" -o "$algo" = "sellers" ]
+                then
+                    echo "./../bin/pmt -a $algo -c -e $error $pat ../data/$file"
+                    STARTTIME=`date +%s.%N`
+                    count=`./../bin/pmt -a $algo -c -e $error $pat ../data/$file`
+                    ENDTIME=`date +%s.%N`
+                    TIMEDIFF=`echo "$ENDTIME - $STARTTIME" | bc | awk -F"." '{print $1"."substr($2,1,3)}'`
+                    `echo "$algo, $file, $pat, $error, $TIMEDIFF, $count" >> $result`
+                elif [ "$algo" = "agrep" ]
+                then
+                    echo "agrep -c -d '\n' -I1 -D1 -S1 -$error $pat ../data/$file"
+                    STARTTIME=`date +%s.%N`
+                    count=`agrep -c -d '\n' -I1 -D1 -S1 -$error $pat ../data/$file`
+                    ENDTIME=`date +%s.%N`
+                    TIMEDIFF=`echo "$ENDTIME - $STARTTIME" | bc | awk -F"." '{print $1"."substr($2,1,3)}'`
+                    `echo "agrep, $file, $pat, $error, $TIMEDIFF, $count" >> $result`
+                else
+                    echo "Algoritmo nao encontrado"
+                fi
+            done
+        fi
+    done < patterns.txt
 done
+

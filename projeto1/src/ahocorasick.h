@@ -11,6 +11,8 @@
 #include <utility>
 
 #define AB_SIZE_AHOCORASICK 128
+#define DEBUG_A 0
+
 
 class Ahocorasick
 {
@@ -34,8 +36,9 @@ class Ahocorasick
 
       uint_fast16_t build_goto(std::vector<std::string> patts);
       void build_fail(int n);
-    
+    #if DEBUG_A
       void print_fsm(std::unordered_map<std::pair<uint_fast16_t, char>, uint_fast16_t, pair_hash> g, std::vector<std::vector<uint_fast16_t>> o, std::string ab);
+    #endif
 };
 
 

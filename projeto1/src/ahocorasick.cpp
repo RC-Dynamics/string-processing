@@ -1,33 +1,6 @@
 #include "ahocorasick.h"
 
 
-
-void Ahocorasick::print_fsm(std::unordered_map<std::pair<uint_fast16_t, char>, uint_fast16_t, pair_hash> g, std::vector<std::vector<uint_fast16_t> > o, std::string ab)
-{
-    int nxt = o.size();
-    std::cout << "goto" << std::endl;
-    for (int s = 0; s < nxt; s++){
-        std::cout << s << ":";
-        for (char a : ab) {
-            if (g.find({s, a}) != (g).end()){
-                std::cout << a << "-->" << g[{s, a}] << " ";
-            }
-        }
-        std::cout << std::endl;
-    }
-    std::cout << std::endl;
-    std::cout << "occ" << std::endl;
-    for (int s = 0; s < nxt; s++) {
-        std::cout << s << ":";
-        for(uint i = 0; i < o[s].size(); i++){
-            std::cout << o[s][i] << ", ";
-        }
-        std::cout << std::endl;
-    }
-    std::cout << std::endl;
-}
-
-
 Ahocorasick::Ahocorasick()
 {
     for (unsigned int i = 0; i < AB_SIZE_AHOCORASICK; i++)
@@ -39,8 +12,9 @@ Ahocorasick::Ahocorasick()
 void Ahocorasick::build_fsm(std::vector<std::string> patts)  {
     uint_fast16_t n = this->build_goto(patts);
     this->build_fail(n);
+#if DEBUG_A
     print_fsm(this->g, this->o, this->ab);
-    
+#endif
 }
 
 uint_fast16_t Ahocorasick::build_goto(std::vector<std::string> patts) {
@@ -101,15 +75,6 @@ void Ahocorasick::build_fail(int n) {
                     brd = (this->f)[brd];
                 }
                 (this->f)[nxt] = (this->g)[{brd, char(s)}];
-                // for (auto a : this->o)
-                // {
-                //     for (auto b : a)
-                //     {
-                //         std::cout << b << ", ";
-                //     }
-                //     std::cout << " | ";
-                // }
-                std::cout << std::endl;
                 for(auto a : (this->o)[(this->f)[nxt]]) {
                     (this->o)[nxt].push_back(a);
                 }
@@ -141,3 +106,35 @@ std::vector<std::vector<uint_fast16_t> > Ahocorasick::find(std::string text, std
     }
     return occ;
 }
+
+#if DEBUG_A
+void Ahocorasick::print_fsm(std::unordered_map<std::pair<uint_fast16_t, char>, uint_fast16_t, pair_hash> g, std::vector<std::vector<uint_fast16_t>> o, std::string ab)
+{
+    int nxt = o.size();
+    std::cout << "goto" << std::endl;
+    for (int s = 0; s < nxt; s++)
+    {
+        std::cout << s << ":";
+        for (char a : ab)
+        {
+            if (g.find({s, a}) != (g).end())
+            {
+                std::cout << a << "-->" << g[{s, a}] << " ";
+            }
+        }
+        std::cout << std::endl;
+    }
+    std::cout << std::endl;
+    std::cout << "occ" << std::endl;
+    for (int s = 0; s < nxt; s++)
+    {
+        std::cout << s << ":";
+        for (uint i = 0; i < o[s].size(); i++)
+        {
+            std::cout << o[s][i] << ", ";
+        }
+        std::cout << std::endl;
+    }
+    std::cout << std::endl;
+}
+#endif

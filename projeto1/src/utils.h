@@ -49,9 +49,10 @@ namespace utils {
         printf("\t--algorithm -a ALGORITHMS    Chose algorithm\n");
         printf("\t--count     -c               Print only occurrences count\n");
         printf("\t--edit      -e NUM           NUM chooses algorithm edit distance\n");
-        printf("\t                               Used only if algorithm supports\n");
-        printf("\t                               If no algoritmh chose, ...  \n");
+        printf("\t                                Used only if algorithm supports\n");
+        printf("\t                                If no algoritmh chosen, pmt uses wu-manbem  \n");
         printf("\t--pattern   -p ARQUIVO       Search each pattern on file, one per line\n");
+        printf("\t                                More than 1 pattern, works only for aho-corasick  \n");
         printf("\t--help      -h               Show help\n");
         printf("Made by: Lucas Cavalcnati and Roberto Fernandes  - {lhcs, rcf6}@cin.ufpe.br\n");
     }

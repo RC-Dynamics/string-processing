@@ -4,11 +4,19 @@ errors=`cat errors.txt`
 algo=$1
 result="result-$algo.csv"
 `rm $result && touch $result`
+patterns=()
+
+IFS=''
+while read pat
+do
+    patterns+=($pat)
+done < patterns.txt
+
+`unset IFS`
 
 for file in $files
 do
-    IFS=''
-    while read pat
+    for pat in "${patterns[@]}"
     do
         if [ "$algo" = "aho-corasick" -o "$algo" = "shift-or" ]
         then
@@ -50,6 +58,6 @@ do
                 fi
             done
         fi
-    done < patterns.txt
+    done
 done
 

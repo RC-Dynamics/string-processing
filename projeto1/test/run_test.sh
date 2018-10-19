@@ -46,11 +46,16 @@ do
                     `echo "$algo, $file, $pat, $error, $TIMEDIFF, $count" >> $result`
                 elif [ "$algo" = "agrep" ]
                 then
-                    STARTTIME=`date +%s.%N`
-                    count=`agrep -c -d '\n' -I1 -D1 -S1 -$error $pat ../data/$file`
-                    ENDTIME=`date +%s.%N`
-                    TIMEDIFF=`echo "$ENDTIME - $STARTTIME" | bc | awk -F"." '{print $1"."substr($2,1,3)}'`
-                    `echo "agrep, $file, $pat, $error, $TIMEDIFF, $count" >> $result`
+                    if [ "$error" -lt 9 -a "$error" -lt "${#pat}" ]
+                    then
+                        STARTTIME=`date +%s.%N`
+                        count=`agrep -c -d '\n' -I1 -D1 -S1 -$error $pat ../data/$file`
+                        ENDTIME=`date +%s.%N`
+                        TIMEDIFF=`echo "$ENDTIME - $STARTTIME" | bc | awk -F"." '{print $1"."substr($2,1,3)}'`
+                        `echo "agrep, $file, $pat, $error, $TIMEDIFF, $count" >> $result`
+                    else
+                        `echo "agrep, $file, $pat, $error, NULL, NULL" >> $result`
+                    fi
                 else
                     echo "Algoritmo nao encontrado"
                 fi

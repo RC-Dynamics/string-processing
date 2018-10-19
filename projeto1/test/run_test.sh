@@ -22,7 +22,6 @@ do
     do
         if [ "$algo" = "aho-corasick" -o "$algo" = "shift-or" ]
         then
-            echo "./../bin/pmt -a $algo -c $pat ../data/$file"
             STARTTIME=`date +%s.%N`
             count=`./../bin/pmt -a $algo -c $pat ../data/$file`
             ENDTIME=`date +%s.%N`
@@ -30,7 +29,6 @@ do
             `echo "$algo, $file, $pat, $TIMEDIFF, $count" >> $result`
         elif [ "$algo" = "grep" ]
         then
-            echo "grep -c "$pat" ../data/$file"
             STARTTIME=`date +%s.%N`
             count=`grep -c "$pat" ../data/$file`
             ENDTIME=`date +%s.%N`
@@ -41,7 +39,6 @@ do
             do
                 if [ "$algo" = "wu-manber" -o "$algo" = "sellers" ]
                 then
-                    echo "./../bin/pmt -a $algo -c -e $error $pat ../data/$file"
                     STARTTIME=`date +%s.%N`
                     count=`./../bin/pmt -a $algo -c -e $error $pat ../data/$file`
                     ENDTIME=`date +%s.%N`
@@ -49,7 +46,6 @@ do
                     `echo "$algo, $file, $pat, $error, $TIMEDIFF, $count" >> $result`
                 elif [ "$algo" = "agrep" ]
                 then
-                    echo "agrep -c -d '\n' -I1 -D1 -S1 -$error $pat ../data/$file"
                     STARTTIME=`date +%s.%N`
                     count=`agrep -c -d '\n' -I1 -D1 -S1 -$error $pat ../data/$file`
                     ENDTIME=`date +%s.%N`

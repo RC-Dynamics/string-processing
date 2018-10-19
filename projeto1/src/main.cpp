@@ -1,6 +1,6 @@
 #include <iostream>
 
-#include "utils.h"
+#include "run_algorithms.h"
 
 
 void test();
@@ -10,27 +10,38 @@ int main (int argc, char* argv[]){
     utils::argmnts arg;
     utils::getArguments(&arg, argc, argv);
     int ch = utils::choseAlg(&arg);
-    if (ch == ahocorasick){
-        // printf("\nAHOCORASICK\n");
-        Ahocorasick d;
-        d.build_fsm(arg.patterns);
-        int count = utils::run_aho(arg, &d);
-        if(arg.count_only)
-            printf("\nTotal Number of Occurrences: %d\n", count);
+    int count;
+    if (ch == ahocorasick)
+    {
+        Ahocorasick search;
+        search.build_fsm(arg.patterns);
+        count = runner::run_aho(arg, &search);
     }
     else if (ch == shiftor){
-        // printf("\nSHIFTOR\n");
+        Shift_Or search;
+        search.set_char_mask(arg.patterns[0]);
+        count = runner::run_shi(arg, &search);
+
     }
     else if (ch == wumanber)
     {
-        // printf("\nWUMANBER\n");
+        Wu_Manber search;
+        search.set_char_mask(arg.patterns[0]);
+        count = runner::run_wu(arg, &search, arg.edit_dist);
     }
     else if (ch == sellers)
     {
-        // printf("\nSELLERS\n");
+        Sellers search;
+        count = runner::run_sel(arg, &search, arg.edit_dist);
     }
-    else
+    else{
         printf("\nInvalid Option Choose\n");
+        utils::print_help();
+        return 0;
+    }
+    if (arg.count_only)
+        printf("%d\n", count);
+    
     return 0;
 }
 

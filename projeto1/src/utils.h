@@ -78,7 +78,7 @@ namespace utils {
                 break;
             case 'h':
                 print_help();
-                return true;
+                return false;
                 break;
             default:
                 printf("No option selected \n");

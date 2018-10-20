@@ -8,7 +8,8 @@ void test();
 
 int main (int argc, char* argv[]){
     utils::argmnts arg;
-    utils::getArguments(&arg, argc, argv);
+    if (!utils::getArguments(&arg, argc, argv))
+        return 0;
     int ch = utils::choseAlg(&arg);
     int count;
     if (ch == ahocorasick)

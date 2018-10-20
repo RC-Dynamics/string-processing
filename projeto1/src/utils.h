@@ -164,10 +164,10 @@ namespace utils {
                 return ahocorasick;
             else
                 return -1;
-        } else if (arg->edit_dist > 0) {
+        } else if (arg->edit_dist > 0 || arg->max_pattern > 64) {
             return wumanber;
-        } else {
-            return wumanber;
+        } else{
+            return shiftor;
         }
     }
 }

@@ -18,6 +18,16 @@ sellers, english.200MB, deliberation, 5, 8.072, 67469
 sellers, english.200MB, understanding, 5, 8.751, 29919
 sellers, english.200MB, transportation, 5, 9.176, 9043
 sellers, english.200MB, Hop-o'-My-Thumb, 5, 8.497, 26
+sellers, english.200MB, ./patterns/pattern1.txt, 5, 11.357, 1063
+sellers, english.200MB, ./patterns/pattern2.txt, 5, 11.077, 374
+sellers, english.200MB, ./patterns/pattern3.txt, 5, 11.140, 713
+sellers, english.200MB, ./patterns/pattern4.txt, 5, 12.419, 179
+sellers, english.200MB, ./patterns/pattern5.txt, 5, 13.788, 35
+sellers, english.200MB, ./patterns/pattern6.txt, 5, 13.998, 642
+sellers, english.200MB, ./patterns/pattern7.txt, 5, 14.440, 44
+sellers, english.200MB, ./patterns/pattern8.txt, 5, 14.877, 2
+sellers, english.200MB, ./patterns/pattern9.txt, 5, 15.327, 2
+sellers, english.200MB, ./patterns/pattern10.txt, 5, 15.967, 1
 wu-manber, english.200MB, myself, 5, 4.354, 3408184
 wu-manber, english.200MB, several, 5, 4.018, 3324736
 wu-manber, english.200MB, thousand, 5, 3.670, 3039688

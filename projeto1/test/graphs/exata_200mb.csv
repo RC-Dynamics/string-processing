@@ -23,21 +23,21 @@ grep, english.200MB, ./patterns/pattern7.txt, .129, 2
 grep, english.200MB, ./patterns/pattern8.txt, .101, 1
 grep, english.200MB, ./patterns/pattern9.txt, .105, 1
 grep, english.200MB, ./patterns/pattern10.txt, .098, 1
-agrep, english.200MB, a, 0, .490, 6818428
-agrep, english.200MB, as, 0, .444, 1089711
-agrep, english.200MB, the, 0, .458, 2587010
-agrep, english.200MB, tell, 0, .434, 30496
-agrep, english.200MB, those, 0, .425, 34394
-agrep, english.200MB, myself, 0, .425, 13348
-agrep, english.200MB, several, 0, .425, 7903
-agrep, english.200MB, thousand, 0, .426, 0
-agrep, english.200MB, adventure, 0, .425, 0
-agrep, english.200MB, themselves, 0, .427, 13173
-agrep, english.200MB, dissolution, 0, .426, 182
-agrep, english.200MB, deliberation, 0, .426, 289
-agrep, english.200MB, understanding, 0, .428, 0
-agrep, english.200MB, transportation, 0, .424, 0
-agrep, english.200MB, Hop-o'-My-Thumb, 0, .426, 19
+agrep, english.200MB, a, .490, 6818428
+agrep, english.200MB, as, .444, 1089711
+agrep, english.200MB, the, .458, 2587010
+agrep, english.200MB, tell, .434, 30496
+agrep, english.200MB, those, .425, 34394
+agrep, english.200MB, myself, .425, 13348
+agrep, english.200MB, several, .425, 7903
+agrep, english.200MB, thousand, .426, 0
+agrep, english.200MB, adventure, .425, 0
+agrep, english.200MB, themselves, .427, 13173
+agrep, english.200MB, dissolution, .426, 182
+agrep, english.200MB, deliberation, .426, 289
+agrep, english.200MB, understanding, .428, 0
+agrep, english.200MB, transportation, .424, 0
+agrep, english.200MB, Hop-o'-My-Thumb, .426, 19
 agrep, english.200MB, ./patterns/pattern1.txt, NULL, NULL
 agrep, english.200MB, ./patterns/pattern2.txt, NULL, NULL
 agrep, english.200MB, ./patterns/pattern3.txt, NULL, NULL
@@ -73,33 +73,53 @@ shift-or, english.200MB, ./patterns/pattern7.txt, .563, 2
 shift-or, english.200MB, ./patterns/pattern8.txt, .614, 1
 shift-or, english.200MB, ./patterns/pattern9.txt, .560, 1
 shift-or, english.200MB, ./patterns/pattern10.txt, .569, 1
-wu-manber, english.200MB, a, 0, 1.249, 3280452
-wu-manber, english.200MB, as, 0, .880, 1002956
-wu-manber, english.200MB, the, 0, .966, 2032709
-wu-manber, english.200MB, tell, 0, .827, 30653
-wu-manber, english.200MB, those, 0, .825, 34350
-wu-manber, english.200MB, myself, 0, .825, 13367
-wu-manber, english.200MB, several, 0, .826, 7926
-wu-manber, english.200MB, thousand, 0, .822, 10678
-wu-manber, english.200MB, adventure, 0, .825, 2914
-wu-manber, english.200MB, themselves, 0, .833, 13157
-wu-manber, english.200MB, dissolution, 0, .823, 187
-wu-manber, english.200MB, deliberation, 0, .827, 292
-wu-manber, english.200MB, understanding, 0, .822, 2443
-wu-manber, english.200MB, transportation, 0, .824, 243
-wu-manber, english.200MB, Hop-o'-My-Thumb, 0, .826, 19
-sellers, english.200MB, a, 0, 2.304, 3279852
-sellers, english.200MB, as, 0, 2.588, 1001692
-sellers, english.200MB, the, 0, 3.139, 2032570
-sellers, english.200MB, tell, 0, 3.510, 30414
-sellers, english.200MB, those, 0, 4.067, 34169
-sellers, english.200MB, myself, 0, 4.374, 13290
-sellers, english.200MB, several, 0, 4.994, 7894
-sellers, english.200MB, thousand, 0, 6.027, 10655
-sellers, english.200MB, adventure, 0, 7.111, 2899
-sellers, english.200MB, themselves, 0, 7.006, 13148
-sellers, english.200MB, dissolution, 0, 7.114, 180
-sellers, english.200MB, deliberation, 0, 8.316, 288
-sellers, english.200MB, understanding, 0, 8.965, 2442
-sellers, english.200MB, transportation, 0, 9.057, 243
-sellers, english.200MB, Hop-o'-My-Thumb, 0, 8.404, 19
+wu-manber, english.200MB, a, 1.249, 3280452
+wu-manber, english.200MB, as, .880, 1002956
+wu-manber, english.200MB, the, .966, 2032709
+wu-manber, english.200MB, tell, .827, 30653
+wu-manber, english.200MB, those, .825, 34350
+wu-manber, english.200MB, myself, .825, 13367
+wu-manber, english.200MB, several, .826, 7926
+wu-manber, english.200MB, thousand, .822, 10678
+wu-manber, english.200MB, adventure, .825, 2914
+wu-manber, english.200MB, themselves, .833, 13157
+wu-manber, english.200MB, dissolution, .823, 187
+wu-manber, english.200MB, deliberation, .827, 292
+wu-manber, english.200MB, understanding, .822, 2443
+wu-manber, english.200MB, transportation, .824, 243
+wu-manber, english.200MB, Hop-o'-My-Thumb, .826, 19
+wu-manber, english.200MB, ./patterns/pattern1.txt, .898, 59
+wu-manber, english.200MB, ./patterns/pattern2.txt, .849, 17
+wu-manber, english.200MB, ./patterns/pattern3.txt, .883, 23
+wu-manber, english.200MB, ./patterns/pattern4.txt, .843, 1
+wu-manber, english.200MB, ./patterns/pattern5.txt, .931, 1
+wu-manber, english.200MB, ./patterns/pattern6.txt, .850, 5
+wu-manber, english.200MB, ./patterns/pattern7.txt, .883, 2
+wu-manber, english.200MB, ./patterns/pattern8.txt, .888, 1
+wu-manber, english.200MB, ./patterns/pattern9.txt, .866, 1
+wu-manber, english.200MB, ./patterns/pattern10.txt, .847, 1
+sellers, english.200MB, a, 2.304, 3279852
+sellers, english.200MB, as, 2.588, 1001692
+sellers, english.200MB, the, 3.139, 2032570
+sellers, english.200MB, tell, 3.510, 30414
+sellers, english.200MB, those, 4.067, 34169
+sellers, english.200MB, myself, 4.374, 13290
+sellers, english.200MB, several, 4.994, 7894
+sellers, english.200MB, thousand, 6.027, 10655
+sellers, english.200MB, adventure, 7.111, 2899
+sellers, english.200MB, themselves, 7.006, 13148
+sellers, english.200MB, dissolution, 7.114, 180
+sellers, english.200MB, deliberation, 8.316, 288
+sellers, english.200MB, understanding, 8.965, 2442
+sellers, english.200MB, transportation, 9.057, 243
+sellers, english.200MB, Hop-o'-My-Thumb, 8.404, 19
+sellers, english.200MB, ./patterns/pattern1.txt, 10.875, 58
+sellers, english.200MB, ./patterns/pattern2.txt, 10.824, 16
+sellers, english.200MB, ./patterns/pattern3.txt, 11.178, 22
+sellers, english.200MB, ./patterns/pattern4.txt, 12.654, 1
+sellers, english.200MB, ./patterns/pattern5.txt, 14.277, 1
+sellers, english.200MB, ./patterns/pattern6.txt, 14.100, 5
+sellers, english.200MB, ./patterns/pattern7.txt, 14.618, 2
+sellers, english.200MB, ./patterns/pattern8.txt, 14.488, 1
+sellers, english.200MB, ./patterns/pattern9.txt, 15.268, 1
+sellers, english.200MB, ./patterns/pattern10.txt, 16.000, 1

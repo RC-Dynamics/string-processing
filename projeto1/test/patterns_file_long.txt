@@ -1,0 +1,10 @@
+./patterns/pattern1.txt
+./patterns/pattern2.txt
+./patterns/pattern3.txt
+./patterns/pattern4.txt
+./patterns/pattern5.txt
+./patterns/pattern6.txt
+./patterns/pattern7.txt
+./patterns/pattern8.txt
+./patterns/pattern9.txt
+./patterns/pattern10.txt

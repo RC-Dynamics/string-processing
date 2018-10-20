@@ -2,15 +2,15 @@
 files=`cat files.txt`
 errors=`cat errors.txt`
 algo=$1
-result="result-$algo.csv"
+result="result-$algo-long.csv"
 `rm $result && touch $result`
-patterns=()
 
+patterns=()
 IFS=''
 while read pat
 do
     patterns+=($pat)
-done < patterns.txt
+done < patterns_file_long.txt
 
 `unset IFS`
 IFS=" $(echo t | tr t \\t)
@@ -23,14 +23,14 @@ do
         if [ "$algo" = "aho-corasick" -o "$algo" = "shift-or" ]
         then
             STARTTIME=`date +%s.%N`
-            count=`./../bin/pmt -a $algo -c $pat ../data/$file`
+            count=`./../bin/pmt -a $algo -c -p $pat ../data/$file`
             ENDTIME=`date +%s.%N`
             TIMEDIFF=`echo "$ENDTIME - $STARTTIME" | bc | awk -F"." '{print $1"."substr($2,1,3)}'`
             `echo "$algo, $file, $pat, $TIMEDIFF, $count" >> $result`
         elif [ "$algo" = "grep" ]
         then
             STARTTIME=`date +%s.%N`
-            count=`grep -c "$pat" ../data/$file`
+            count=`grep -c -f "$pat" ../data/$file`
             ENDTIME=`date +%s.%N`
             TIMEDIFF=`echo "$ENDTIME - $STARTTIME" | bc | awk -F"." '{print $1"."substr($2,1,3)}'`
             `echo "grep, $file, $pat, $TIMEDIFF, $count" >> $result`
@@ -40,7 +40,7 @@ do
                 if [ "$algo" = "wu-manber" -o "$algo" = "sellers" ]
                 then
                     STARTTIME=`date +%s.%N`
-                    count=`./../bin/pmt -a $algo -c -e $error $pat ../data/$file`
+                    count=`./../bin/pmt -a $algo -c -e $error -p $pat ../data/$file`
                     ENDTIME=`date +%s.%N`
                     TIMEDIFF=`echo "$ENDTIME - $STARTTIME" | bc | awk -F"." '{print $1"."substr($2,1,3)}'`
                     `echo "$algo, $file, $pat, $error, $TIMEDIFF, $count" >> $result`
@@ -49,7 +49,7 @@ do
                     if [ "$error" -lt 9 -a "$error" -lt "${#pat}" ]
                     then
                         STARTTIME=`date +%s.%N`
-                        count=`agrep -c -d '\n' -I1 -D1 -S1 -$error $pat ../data/$file`
+                        count=`agrep -c -d '\n' -I1 -D1 -S1 -$error -f $pat ../data/$file`
                         ENDTIME=`date +%s.%N`
                         TIMEDIFF=`echo "$ENDTIME - $STARTTIME" | bc | awk -F"." '{print $1"."substr($2,1,3)}'`
                         `echo "agrep, $file, $pat, $error, $TIMEDIFF, $count" >> $result`
@@ -57,7 +57,7 @@ do
                         `echo "agrep, $file, $pat, $error, NULL, NULL" >> $result`
                     fi
                 else
-                    echo "Algoritmo nao encontrado"
+                    echo "Algorithm not find!"
                 fi
             done
         fi

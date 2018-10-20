@@ -15,7 +15,7 @@ Simplesmente o comando `make`
 
 Simplesmente o comando `./bin/pmt`
 
-Ao rodar `./bin/pmt --help` mostrasse as opções para rodar o programa, como demostrado abaixo.
+Ao rodar `./bin/pmt --help` mostra-se as opções para rodar o programa, como demostrado abaixo.
 
 ```
 pmt [-a {aho-corasick, shift-or, wu-manber, sellers}] [-c] [-e NUM] [-p FILE]|PATTERN FILE [FILE2...]

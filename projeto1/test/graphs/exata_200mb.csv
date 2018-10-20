@@ -1,0 +1,105 @@
+grep, english.200MB, a, .222, 3279852
+grep, english.200MB, as, .436, 1001692
+grep, english.200MB, the, .450, 2032570
+grep, english.200MB, tell, .258, 30414
+grep, english.200MB, those, .284, 34169
+grep, english.200MB, myself, .183, 13290
+grep, english.200MB, several, .192, 7894
+grep, english.200MB, thousand, .197, 10655
+grep, english.200MB, adventure, .199, 2899
+grep, english.200MB, themselves, .169, 13148
+grep, english.200MB, dissolution, .166, 180
+grep, english.200MB, deliberation, .166, 288
+grep, english.200MB, understanding, .138, 2442
+grep, english.200MB, transportation, .148, 243
+grep, english.200MB, Hop-o'-My-Thumb, .108, 19
+grep, english.200MB, ./patterns/pattern1.txt, .134, 58
+grep, english.200MB, ./patterns/pattern2.txt, .119, 16
+grep, english.200MB, ./patterns/pattern3.txt, .111, 22
+grep, english.200MB, ./patterns/pattern4.txt, .118, 1
+grep, english.200MB, ./patterns/pattern5.txt, .109, 1
+grep, english.200MB, ./patterns/pattern6.txt, .121, 5
+grep, english.200MB, ./patterns/pattern7.txt, .129, 2
+grep, english.200MB, ./patterns/pattern8.txt, .101, 1
+grep, english.200MB, ./patterns/pattern9.txt, .105, 1
+grep, english.200MB, ./patterns/pattern10.txt, .098, 1
+agrep, english.200MB, a, 0, .490, 6818428
+agrep, english.200MB, as, 0, .444, 1089711
+agrep, english.200MB, the, 0, .458, 2587010
+agrep, english.200MB, tell, 0, .434, 30496
+agrep, english.200MB, those, 0, .425, 34394
+agrep, english.200MB, myself, 0, .425, 13348
+agrep, english.200MB, several, 0, .425, 7903
+agrep, english.200MB, thousand, 0, .426, 0
+agrep, english.200MB, adventure, 0, .425, 0
+agrep, english.200MB, themselves, 0, .427, 13173
+agrep, english.200MB, dissolution, 0, .426, 182
+agrep, english.200MB, deliberation, 0, .426, 289
+agrep, english.200MB, understanding, 0, .428, 0
+agrep, english.200MB, transportation, 0, .424, 0
+agrep, english.200MB, Hop-o'-My-Thumb, 0, .426, 19
+agrep, english.200MB, ./patterns/pattern1.txt, NULL, NULL
+agrep, english.200MB, ./patterns/pattern2.txt, NULL, NULL
+agrep, english.200MB, ./patterns/pattern3.txt, NULL, NULL
+agrep, english.200MB, ./patterns/pattern4.txt, NULL, NULL
+agrep, english.200MB, ./patterns/pattern5.txt, NULL, NULL
+agrep, english.200MB, ./patterns/pattern6.txt, NULL, NULL
+agrep, english.200MB, ./patterns/pattern7.txt, NULL, NULL
+agrep, english.200MB, ./patterns/pattern8.txt, NULL, NULL
+agrep, english.200MB, ./patterns/pattern9.txt, NULL, NULL
+agrep, english.200MB, ./patterns/pattern10.txt, NULL, NULL
+shift-or, english.200MB, a, .953, 3280457
+shift-or, english.200MB, as, .586, 1002969
+shift-or, english.200MB, the, 1.073, 2032709
+shift-or, english.200MB, tell, .536, 30656
+shift-or, english.200MB, those, .685, 34352
+shift-or, english.200MB, myself, .930, 13366
+shift-or, english.200MB, several, .927, 7925
+shift-or, english.200MB, thousand, .937, 10676
+shift-or, english.200MB, adventure, .596, 2914
+shift-or, english.200MB, themselves, .549, 13157
+shift-or, english.200MB, dissolution, .601, 185
+shift-or, english.200MB, deliberation, .540, 293
+shift-or, english.200MB, understanding, .954, 2445
+shift-or, english.200MB, transportation, .589, 243
+shift-or, english.200MB, Hop-o'-My-Thumb, .842, 19
+shift-or, english.200MB, ./patterns/pattern1.txt, .609, 59
+shift-or, english.200MB, ./patterns/pattern2.txt, .560, 17
+shift-or, english.200MB, ./patterns/pattern3.txt, .579, 23
+shift-or, english.200MB, ./patterns/pattern4.txt, .562, 1
+shift-or, english.200MB, ./patterns/pattern5.txt, .557, 1
+shift-or, english.200MB, ./patterns/pattern6.txt, .556, 5
+shift-or, english.200MB, ./patterns/pattern7.txt, .563, 2
+shift-or, english.200MB, ./patterns/pattern8.txt, .614, 1
+shift-or, english.200MB, ./patterns/pattern9.txt, .560, 1
+shift-or, english.200MB, ./patterns/pattern10.txt, .569, 1
+wu-manber, english.200MB, a, 0, 1.249, 3280452
+wu-manber, english.200MB, as, 0, .880, 1002956
+wu-manber, english.200MB, the, 0, .966, 2032709
+wu-manber, english.200MB, tell, 0, .827, 30653
+wu-manber, english.200MB, those, 0, .825, 34350
+wu-manber, english.200MB, myself, 0, .825, 13367
+wu-manber, english.200MB, several, 0, .826, 7926
+wu-manber, english.200MB, thousand, 0, .822, 10678
+wu-manber, english.200MB, adventure, 0, .825, 2914
+wu-manber, english.200MB, themselves, 0, .833, 13157
+wu-manber, english.200MB, dissolution, 0, .823, 187
+wu-manber, english.200MB, deliberation, 0, .827, 292
+wu-manber, english.200MB, understanding, 0, .822, 2443
+wu-manber, english.200MB, transportation, 0, .824, 243
+wu-manber, english.200MB, Hop-o'-My-Thumb, 0, .826, 19
+sellers, english.200MB, a, 0, 2.304, 3279852
+sellers, english.200MB, as, 0, 2.588, 1001692
+sellers, english.200MB, the, 0, 3.139, 2032570
+sellers, english.200MB, tell, 0, 3.510, 30414
+sellers, english.200MB, those, 0, 4.067, 34169
+sellers, english.200MB, myself, 0, 4.374, 13290
+sellers, english.200MB, several, 0, 4.994, 7894
+sellers, english.200MB, thousand, 0, 6.027, 10655
+sellers, english.200MB, adventure, 0, 7.111, 2899
+sellers, english.200MB, themselves, 0, 7.006, 13148
+sellers, english.200MB, dissolution, 0, 7.114, 180
+sellers, english.200MB, deliberation, 0, 8.316, 288
+sellers, english.200MB, understanding, 0, 8.965, 2442
+sellers, english.200MB, transportation, 0, 9.057, 243
+sellers, english.200MB, Hop-o'-My-Thumb, 0, 8.404, 19

@@ -1,0 +1,8 @@
+aho-corasick, shakespeare.txt, ./patterns/pattern_mult.txt, 2, .153, 98202
+aho-corasick, shakespeare.txt, ./patterns/pattern_mult.txt, 5, .198, 101783
+aho-corasick, shakespeare.txt, ./patterns/pattern_mult.txt, 10, .309, 101432
+aho-corasick, shakespeare.txt, ./patterns/pattern_mult.txt, 25, .360, 101111
+grep, shakespeare.txt, ./patterns/pattern_mult.txt, 2, .009, 98202
+grep, shakespeare.txt, ./patterns/pattern_mult.txt, 5, .015, 101783
+grep, shakespeare.txt, ./patterns/pattern_mult.txt, 10, .021, 101819
+grep, shakespeare.txt, ./patterns/pattern_mult.txt, 25, .025, 101819

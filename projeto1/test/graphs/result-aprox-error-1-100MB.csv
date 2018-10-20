@@ -40,3 +40,13 @@ wu-manber, english.100MB, deliberation, 1, .682, 176
 wu-manber, english.100MB, understanding, 1, .693, 975
 wu-manber, english.100MB, transportation, 1, .677, 115
 wu-manber, english.100MB, Hop-o'-My-Thumb, 1, .673, 22
+wu-manber, english.100MB, ./patterns/pattern1.txt, 1, .698, 90
+wu-manber, english.100MB, ./patterns/pattern2.txt, 1, .716, 11
+wu-manber, english.100MB, ./patterns/pattern3.txt, 1, .716, 26
+wu-manber, english.100MB, ./patterns/pattern4.txt, 1, .770, 3
+wu-manber, english.100MB, ./patterns/pattern5.txt, 1, .719, 2
+wu-manber, english.100MB, ./patterns/pattern6.txt, 1, .698, 17
+wu-manber, english.100MB, ./patterns/pattern7.txt, 1, .734, 4
+wu-manber, english.100MB, ./patterns/pattern8.txt, 1, .769, 2
+wu-manber, english.100MB, ./patterns/pattern9.txt, 1, .708, 2
+wu-manber, english.100MB, ./patterns/pattern10.txt, 1, .728, 1

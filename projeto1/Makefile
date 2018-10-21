@@ -42,3 +42,4 @@ objFolder:
 clean:
 	$(RM) ./generated_files/*.o $(PROJ_NAME) *~
 	rmdir generated_files
+	$(RM) bin

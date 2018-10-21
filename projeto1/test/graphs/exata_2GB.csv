@@ -1,0 +1,115 @@
+grep, english, a, 3.069, 34128016
+grep, english, as, 4.019, 10521684
+grep, english, the, 4.709, 20809642
+grep, english, tell, 2.510, 328736
+grep, english, those, 2.867, 360315
+grep, english, myself, 1.855, 141222
+grep, english, several, 1.986, 87360
+grep, english, thousand, 2.114, 97240
+grep, english, adventure, 2.004, 24154
+grep, english, themselves, 1.563, 138281
+grep, english, dissolution, 1.736, 2369
+grep, english, deliberation, 1.700, 3723
+grep, english, understanding, 1.452, 25947
+grep, english, transportation, 1.591, 3376
+grep, english, Hop-o'-My-Thumb, 1.165, 19
+grep, english, ./patterns/pattern1.txt, 1.624, 388
+grep, english, ./patterns/pattern2.txt, 1.248, 16
+grep, english, ./patterns/pattern3.txt, 1.237, 25
+grep, english, ./patterns/pattern4.txt, 1.449, 2
+grep, english, ./patterns/pattern5.txt, 1.358, 2
+grep, english, ./patterns/pattern6.txt, 1.495, 59
+grep, english, ./patterns/pattern7.txt, 1.277, 2
+grep, english, ./patterns/pattern8.txt, 1.133, 1
+grep, english, ./patterns/pattern9.txt, 1.288, 1
+grep, english, ./patterns/pattern10.txt, 1.214, 1
+agrep, english, a, 5.142, 71570416
+agrep, english, as, 4.624, 11492253
+agrep, english, the, 4.798, 26530297
+agrep, english, tell, 4.472, 330098
+agrep, english, those, 4.466, 362995
+agrep, english, myself, 4.474, 141879
+agrep, english, several, 4.469, 87503
+agrep, english, thousand, 4.463, 0
+agrep, english, adventure, 4.459, 0
+agrep, english, themselves, 4.463, 138684
+agrep, english, dissolution, 4.503, 2373
+agrep, english, deliberation, 4.513, 3727
+agrep, english, understanding, 4.462, 0
+agrep, english, transportation, 4.518, 0
+agrep, english, Hop-o'-My-Thumb, 4.458, 19
+agrep, english, ./patterns/pattern1.txt, NULL, NULL
+agrep, english, ./patterns/pattern2.txt, NULL, NULL
+agrep, english, ./patterns/pattern3.txt, NULL, NULL
+agrep, english, ./patterns/pattern4.txt, NULL, NULL
+agrep, english, ./patterns/pattern5.txt, NULL, NULL
+agrep, english, ./patterns/pattern6.txt, NULL, NULL
+agrep, english, ./patterns/pattern7.txt, NULL, NULL
+agrep, english, ./patterns/pattern8.txt, NULL, NULL
+agrep, english, ./patterns/pattern9.txt, NULL, NULL
+agrep, english, ./patterns/pattern10.txt, NULL, NULL
+shift-or, english, a, 14.214, 34133743
+shift-or, english, as, 8.357, 10536140
+shift-or, english, the, 7.820, 20810924
+shift-or, english, tell, 5.389, 329570
+shift-or, english, those, 6.223, 360595
+shift-or, english, myself, 5.751, 141312
+shift-or, english, several, 6.894, 87396
+shift-or, english, thousand, 5.950, 97268
+shift-or, english, adventure, 6.613, 24169
+shift-or, english, themselves, 6.618, 138290
+shift-or, english, dissolution, 6.411, 2375
+shift-or, english, deliberation, 5.247, 3728
+shift-or, english, understanding, 5.767, 25950
+shift-or, english, transportation, 5.426, 3377
+shift-or, english, Hop-o'-My-Thumb, 5.235, 20
+shift-or, english, ./patterns/pattern1.txt, 6.364, 388
+shift-or, english, ./patterns/pattern2.txt, 5.866, 16
+shift-or, english, ./patterns/pattern3.txt, 5.835, 25
+shift-or, english, ./patterns/pattern4.txt, 5.850, 2
+shift-or, english, ./patterns/pattern5.txt, 5.818, 2
+shift-or, english, ./patterns/pattern6.txt, 5.835, 59
+shift-or, english, ./patterns/pattern7.txt, 5.715, 2
+shift-or, english, ./patterns/pattern8.txt, 5.777, 1
+shift-or, english, ./patterns/pattern9.txt, 5.800, 1
+shift-or, english, ./patterns/pattern10.txt, 5.963, 1
+wu-manber, english, a, 13.092, 34133919
+wu-manber, english, as, 9.117, 10535990
+wu-manber, english, the, 10.127, 20810918
+wu-manber, english, tell, 8.514, 329563
+wu-manber, english, those, 8.452, 360609
+wu-manber, english, myself, 8.560, 141312
+wu-manber, english, several, 8.480, 87393
+wu-manber, english, thousand, 8.525, 97268
+wu-manber, english, adventure, 8.395, 24163
+wu-manber, english, themselves, 8.502, 138292
+wu-manber, english, dissolution, 8.533, 2374
+wu-manber, english, deliberation, 8.675, 3727
+wu-manber, english, understanding, 8.422, 25949
+wu-manber, english, transportation, 8.416, 3376
+wu-manber, english, Hop-o'-My-Thumb, 8.411, 19
+wu-manber, english, ./patterns/pattern1.txt, 0, 8.918, 388
+wu-manber, english, ./patterns/pattern2.txt, 0, 8.850, 16
+wu-manber, english, ./patterns/pattern3.txt, 0, 9.083, 25
+wu-manber, english, ./patterns/pattern4.txt, 0, 8.857, 2
+wu-manber, english, ./patterns/pattern5.txt, 0, 9.340, 2
+wu-manber, english, ./patterns/pattern6.txt, 0, 9.387, 59
+wu-manber, english, ./patterns/pattern7.txt, 0, 9.333, 2
+wu-manber, english, ./patterns/pattern8.txt, 0, 9.002, 1
+wu-manber, english, ./patterns/pattern9.txt, 0, 9.792, 1
+wu-manber, english, ./patterns/pattern10.txt, 0, 9.428, 1
+sellers, english, a, 26.456, 34128016
+sellers, english, as, 26.976, 10521684
+sellers, english, the, 31.674, 20809642
+sellers, english, tell, 36.492, 328736
+sellers, english, those, 41.463, 360315
+sellers, english, myself, 45.073, 141222
+sellers, english, several, 53.630, 87360
+sellers, english, thousand, 58.709, 97240
+sellers, english, adventure, 62.976, 24154
+sellers, english, themselves, 67.127, 138281
+sellers, english, dissolution, 72.797, 2369
+sellers, english, deliberation, 80.768, 3723
+sellers, english, understanding, 88.429, 25947
+sellers, english, transportation, 90.765, 3376
+sellers, english, Hop-o'-My-Thumb, 84.192, 19

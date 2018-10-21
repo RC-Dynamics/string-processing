@@ -8,6 +8,11 @@ void test();
 
 int main (int argc, char* argv[]){
     utils::argmnts arg;
+    if(argc == 1){
+        printf("No option selected.\n");
+        utils::print_help();
+        return 0;
+    }
     if (!utils::getArguments(&arg, argc, argv))
         return 0;
     int ch = utils::choseAlg(&arg);

@@ -81,7 +81,7 @@ namespace utils {
                 return false;
                 break;
             default:
-                printf("No option selected \n");
+                printf("Invalid option selected \n");
                 exit(0);
             }
         }

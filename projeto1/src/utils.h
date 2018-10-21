@@ -54,7 +54,7 @@ namespace utils {
         printf("\t--pattern   -p ARQUIVO       Search each pattern on file, one per line\n");
         printf("\t                                More than 1 pattern, works only for aho-corasick  \n");
         printf("\t--help      -h               Show help\n");
-        printf("Made by: Lucas Cavalcnati and Roberto Fernandes  - {lhcs, rcf6}@cin.ufpe.br\n");
+        printf("Made by: Lucas Cavalcanti and Roberto Fernandes  - {lhcs, rcf6}@cin.ufpe.br\n");
     }
 
     bool getArguments(argmnts *arg, int argc, char *argv[])

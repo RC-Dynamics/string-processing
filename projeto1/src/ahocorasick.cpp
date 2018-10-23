@@ -96,6 +96,8 @@ std::vector<std::vector<uint_fast16_t> > Ahocorasick::find(std::string text, std
     char a;
     for(int i = 0; i < n; i ++){
         a = text[i];
+        if(a < 0)
+            continue;
         while ((this->g).find({cur, char(a)}) == (this->g).end()) {
             cur = (this->f)[cur];
         }

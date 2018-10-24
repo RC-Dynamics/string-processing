@@ -1,0 +1,5 @@
+aho-corasick, english.50MB, ./patterns/pattern_mult.txt, 2.938, 827876
+aho-corasick, english.100MB, ./patterns/pattern_mult.txt, 5.861, 1642015
+aho-corasick, english.200MB, ./patterns/pattern_mult.txt, 11.618, 3264243
+aho-corasick, english.1024MB, ./patterns/pattern_mult.txt, 59.562, 16649380
+aho-corasick, english, ./patterns/pattern_mult.txt, 122.665, 33956742

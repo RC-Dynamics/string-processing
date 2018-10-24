@@ -1,0 +1,5 @@
+grep, english.50MB, ./patterns/pattern_mult.txt, .070, 833957
+grep, english.100MB, ./patterns/pattern_mult.txt, .139, 1654574
+grep, english.200MB, ./patterns/pattern_mult.txt, .271, 3289413
+grep, english.1024MB, ./patterns/pattern_mult.txt, 1.400, 16793610
+grep, english, ./patterns/pattern_mult.txt, 2.840, 34255119

@@ -1,8 +1,8 @@
 #!/bin/bash
-files=`cat files_shake.txt`
+files=`cat files.txt`
 errors=`cat errors.txt`
 algo=$1
-result="result-$algo-_.csv"
+result="result-$algo-_mult.csv"
 `rm $result && touch $result`
 
 patterns=()
@@ -10,7 +10,7 @@ IFS=''
 while read pat
 do
     patterns+=($pat)
-done < patterns.txt
+done < patterns_file_mult.txt
 
 `unset IFS`
 IFS=" $(echo t | tr t \\t)
@@ -24,14 +24,14 @@ do
         then
             # echo "./../bin/pmt -a $algo -c $pat ../data/$file"
             STARTTIME=`date +%s.%N`
-            count=`./../bin/pmt -a $algo -c $pat ../data/$file`
+            count=`./../bin/pmt -a $algo -c -p $pat ../data/$file`
             ENDTIME=`date +%s.%N`
             TIMEDIFF=`echo "$ENDTIME - $STARTTIME" | bc | awk -F"." '{print $1"."substr($2,1,3)}'`
             `echo "$algo, $file, $pat, $TIMEDIFF, $count" >> $result`
         elif [ "$algo" = "grep" ]
         then
             STARTTIME=`date +%s.%N`
-            count=`grep -c "$pat" ../data/$file`
+            count=`grep -c -f "$pat" ../data/$file`
             ENDTIME=`date +%s.%N`
             TIMEDIFF=`echo "$ENDTIME - $STARTTIME" | bc | awk -F"." '{print $1"."substr($2,1,3)}'`
             `echo "grep, $file, $pat, $TIMEDIFF, $count" >> $result`

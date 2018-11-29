@@ -1,6 +1,6 @@
 # IF767 - Processamento de Cadeias de Caracteres - PMT
 
-Esse repositorio consiste no primeiro da disciplina [Processamento de Cadeias de Caracteres (IF767)](http://www.cin.ufpe.br/~if767), que tem como objetivo a implementação de uma ferramenta para busca exata e aproximada de padrões em arquivos.
+Esse repositorio consiste no primeiro projeto da disciplina [Processamento de Cadeias de Caracteres (IF767)](http://www.cin.ufpe.br/~if767), que tem como objetivo a implementação de uma ferramenta para busca exata e aproximada de padrões em arquivos.
 Esse projeto foi desenvolvido por:
 
 [Lucas Cavalcanti](https://github.com/lhcavalcanti)

@@ -13,6 +13,12 @@ LZ77::LZ77(uint_fast16_t search_buffer_size, uint_fast16_t lookahead_buffer_size
     #endif
 }
 
+void LZ77::set_buffer_size(uint_fast16_t search_buffer_size, uint_fast16_t lookahead_buffer_size)
+{
+    this->lookahead_buffer = lookahead_buffer_size;
+    this->search_buffer = search_buffer_size;
+}
+
 uint_fast16_t LZ77::char_in_ab(char c)
 {
     return this->ab.find(c);

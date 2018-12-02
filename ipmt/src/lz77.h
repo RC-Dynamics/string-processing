@@ -20,6 +20,7 @@ class LZ77
         LZ77(uint_fast16_t search_buffer_size, uint_fast16_t lookahead_buffer_size);
         std::string encode(std::string text);
         std::string decode(std::string code);
+        void set_buffer_size(uint_fast16_t search_buffer_size, uint_fast16_t lookahead_buffer_size);
 
       private:
         uint_fast16_t char_in_ab(char c);

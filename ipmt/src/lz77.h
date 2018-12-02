@@ -9,7 +9,7 @@
 
 #define AB_SIZE_LZ77 128
 
-#define DEBUG_LZ77 1
+#define DEBUG_LZ77 0
 #if DEBUG_LZ77
 #include <iostream>
 #endif

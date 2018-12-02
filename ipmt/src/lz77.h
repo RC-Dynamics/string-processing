@@ -9,7 +9,7 @@
 
 #define AB_SIZE_LZ77 128
 
-#define DEBUG_LZ77 0
+#define DEBUG_LZ77 1
 #if DEBUG_LZ77
 #include <iostream>
 #endif
@@ -22,6 +22,7 @@ class LZ77
         std::string decode(std::string code);
 
       private:
+        uint_fast16_t char_in_ab(char c);
         std::vector<std::vector<uint_fast16_t> > build_fsm(std::string pat);
         std::string int_encode(uint_fast16_t x, uint_fast16_t size);
         uint_fast16_t int_decode(std::string x);

@@ -9,8 +9,13 @@ LZ77::LZ77(uint_fast16_t search_buffer_size, uint_fast16_t lookahead_buffer_size
     this->lookahead_buffer = lookahead_buffer_size;
     this->search_buffer = search_buffer_size;
     #if DEBUG_LZ77
-        // this->ab = "abc0123456789";
+        this->ab = "abc0123456789";
     #endif
+}
+
+uint_fast16_t LZ77::char_in_ab(char c)
+{
+    return this->ab.find(c);
 }
 
 std::vector<std::vector<uint_fast16_t> > LZ77::build_fsm(std::string pat)
@@ -24,24 +29,24 @@ std::vector<std::vector<uint_fast16_t> > LZ77::build_fsm(std::string pat)
     for (char c : this->ab) {
         temp.push_back(0);
     }
-    temp[(uint_fast16_t) pat[0]] = 1;
+    temp[this->char_in_ab(pat[0])] = 1;
     delta.push_back(temp);
 
     uint_fast16_t brd = 0;
     for (uint_fast16_t i = 1; i < m; i++) {
         temp.clear();
         for (char c : this->ab) {
-            temp.push_back(delta[brd][(uint_fast16_t) c]);
+            temp.push_back(delta[brd][this->char_in_ab(c)]);
         }
-        temp[(uint_fast16_t) pat[i]] = i + 1;
-        brd = delta[brd][(uint_fast16_t)pat[i]];
+        temp[this->char_in_ab(pat[i])] = i + 1;
+        brd = delta[brd][this->char_in_ab(pat[i])];
 
         delta.push_back(temp);
     }
 
     temp.clear();
     for (char c : this->ab) {
-        temp.push_back(delta[brd][(uint_fast16_t) c]);
+        temp.push_back(delta[brd][this->char_in_ab(c)]);
     }
     delta.push_back(temp);
 
@@ -50,7 +55,7 @@ std::vector<std::vector<uint_fast16_t> > LZ77::build_fsm(std::string pat)
         for (char c : this->ab) {
             std::cout << c << " :";
             for (uint_fast16_t i = 0; i < m; i++) {
-                std::cout << " " << delta[i][(uint_fast16_t) c];
+                std::cout << " " << delta[i][this->char_in_ab(c)];
             }
             std::cout << std::endl;
         }
@@ -71,7 +76,14 @@ std::pair<uint_fast16_t, uint_fast16_t> LZ77::prefix_match(std::string window, s
     uint_fast16_t ls = n - pat.size();
 
     for (uint_fast16_t i = 0; i < n; i++) {
-        cur = fsm[cur][window[(uint_fast16_t) i]];
+        cur = fsm[cur][this->char_in_ab(window[i])];
+        #if DEBUG_LZ77
+            std::cout << "cur: " << cur;
+            std::cout << " maxlen: " << maxlen;
+            std::cout << " i: " << i;
+            std::cout << " ls: " << ls;
+            std::cout << std::endl;
+        #endif
         if ((cur > maxlen) && (( i - cur + 1) < ls)) {
             maxlen = cur;
             pos = i - cur + 1;
@@ -90,11 +102,18 @@ std::string LZ77::int_encode(uint_fast16_t x, uint_fast16_t size)
     uint_fast16_t bit;
 
     while (x > 0) {
-        bit = x / base;
+        bit = x % base;
         code = ab[bit] + code;
         x /= base;
     }
 
+    #if DEBUG_LZ77
+        std::cout << "base: " << base;
+        std::cout << " codesize: " << code_size;
+        std::cout << " code: " << code;
+        std::cout << std::endl;
+    #endif
+    
     return std::string(code_size - code.size(), this->ab[0]) + code;
 }
 
@@ -126,9 +145,12 @@ std::string LZ77::encode(std::string text)
             std::cout << "< " << W.substr(j - this->search_buffer, this->search_buffer) << " | " << W.substr(j, std::min(n, j + this->lookahead_buffer) - j) << " >" << std::endl;
         #endif
         pos_len = this->prefix_match(W.substr(j - this->search_buffer, std::min(n, j + this->lookahead_buffer) - (j - this->search_buffer)), W.substr(j, std::min(n, j + this->lookahead_buffer) - j));
+        #if DEBUG_LZ77
+            std::cout << "p: " << pos_len.first << " l: " << pos_len.second << std::endl;
+        #endif
         code += this->int_encode(pos_len.first, this->search_buffer);
         code += this->int_encode(pos_len.second, this->lookahead_buffer);
-        code += W[j+1];
+        code += W[j + pos_len.second];
         j += (pos_len.second + 1);
     }
     return code;

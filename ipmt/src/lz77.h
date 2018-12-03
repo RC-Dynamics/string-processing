@@ -17,7 +17,7 @@
 class LZ77
 {
     public:
-        LZ77(uint_fast16_t search_buffer_size, uint_fast16_t lookahead_buffer_size);
+        LZ77(uint_fast16_t search_buffer_size = 512, uint_fast16_t lookahead_buffer_size = 128);
         std::string encode(std::string text);
         std::string decode(std::string code);
         void set_buffer_size(uint_fast16_t search_buffer_size, uint_fast16_t lookahead_buffer_size);

@@ -21,7 +21,9 @@ void LZ77::set_buffer_size(uint_fast16_t search_buffer_size, uint_fast16_t looka
 
 uint_fast16_t LZ77::char_in_ab(char c)
 {
-    return this->ab.find(c);
+    return (uint_fast16_t) c;
+    // DEBUG: When alphabet is not all all ASCII character
+    // return this->ab.find(c);
 }
 
 std::vector<std::vector<uint_fast16_t> > LZ77::build_fsm(std::string pat)

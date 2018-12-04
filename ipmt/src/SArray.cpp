@@ -1,10 +1,13 @@
 #include "SArray.h"
 
-SArray::SArray(char *txt){
+SArray::SArray(){
+}
+
+void SArray::init(char *txt){
     this->txt = txt;
     n = (int)strlen(txt);
     l = (int)ceil(log2(n));
-    this->build_hash();
+    this->build_hash();    
     this->build_prefix();
     this->sa_invert();
 

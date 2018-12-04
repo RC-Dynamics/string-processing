@@ -16,7 +16,8 @@
 
 class SArray {
     public:
-        SArray(char* txt);
+        SArray();
+        void init(char *txt);
         int search(char* pat);
         void build_prefix();
         void build_hash();
@@ -28,16 +29,16 @@ class SArray {
 
         int succ2(char* pat);
         int pred2(char* pat);
-
-      private:
-        std::vector<std::vector<int> > P;
         std::vector<int> SArr;
         std::vector<int> Llcp;
         std::vector<int> Rlcp;
-        int hash[256];
         int n = 0;
         int l = 0;
         char *txt;
+
+      private:
+        std::vector<std::vector<int> > P;
+        int hash[256];
 
 };
 

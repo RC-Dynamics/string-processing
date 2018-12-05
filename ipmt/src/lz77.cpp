@@ -104,8 +104,8 @@ std::pair<uint_fast16_t, uint_fast16_t> LZ77::prefix_match(std::string const & w
 
 std::string LZ77::int_encode(uint_fast16_t x, uint_fast16_t size)
 {
-    uint_fast16_t base = (u_int16_t) this->ab.size();
-    uint_fast16_t code_size = (u_int16_t) ceil(log(size) / log(base));
+    uint_fast16_t base = (uint_fast16_t) this->ab.size();
+    uint_fast16_t code_size = (uint_fast16_t) ceil(log(size) / log(base));
     std::string code;
 
     uint_fast16_t bit;
@@ -128,7 +128,7 @@ std::string LZ77::int_encode(uint_fast16_t x, uint_fast16_t size)
 
 uint_fast16_t LZ77::int_decode(std::string const & x)
 {
-    uint_fast16_t base = (u_int16_t)this->ab.size();
+    uint_fast16_t base = (uint_fast16_t)this->ab.size();
     uint_fast16_t power = 1;
     uint_fast16_t val = 0;
 
@@ -143,8 +143,8 @@ uint_fast16_t LZ77::int_decode(std::string const & x)
 
 std::string LZ77::encode(std::string const & text)
 {
-    std::string W = std::string(this->search_buffer, this->ab[0]) + text;
-    uint_fast16_t n = (u_int16_t) W.size();
+    std::string W (text + std::string(this->search_buffer, this->ab[0]));
+    uint_fast16_t n = (uint_fast16_t) W.size();
     uint_fast16_t j = this->search_buffer;
     std::pair<uint_fast16_t, uint_fast16_t> pos_len;
     std::string code;

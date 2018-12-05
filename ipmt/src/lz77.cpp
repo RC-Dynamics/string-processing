@@ -29,12 +29,13 @@ uint_fast16_t LZ77::char_in_ab(char c)
 std::vector<std::vector<uint_fast16_t> > LZ77::build_fsm(std::string const & pat)
 {
     uint_fast16_t m = pat.size();
+    uint_fast16_t l = this->ab.size();
 
     std::vector<std::vector<uint_fast16_t> > delta;
 
     std::vector<uint_fast16_t> temp;
 
-    for (char c : this->ab) {
+    while (l--) {
         temp.push_back(0);
     }
     temp[this->char_in_ab(pat[0])] = 1;

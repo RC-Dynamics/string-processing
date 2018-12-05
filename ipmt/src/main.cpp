@@ -19,13 +19,13 @@ int main (int argc, char* argv[]) {
     
     FILE *index_file;
     std::string compressed;
-    int bytes;
     int size;
     std::string code;
     char* txt;
     std::string index_fname;
     LZ77 lz(LS, LL);
     SArray SA;
+    size_t fread_result;
 
     switch(arg.option){
         default:
@@ -87,9 +87,21 @@ int main (int argc, char* argv[]) {
                 exit(0);
             }
 
-            fread(&(SA.n), sizeof(int), 1, index_file);
-            fread(&(lz.search_buffer), sizeof(int), 1, index_file);
-            fread(&(lz.lookahead_buffer), sizeof(int), 1, index_file);
+            fread_result = fread(&(SA.n), sizeof(int), 1, index_file);
+            if (fread_result != 1) {
+                printf("Couldn't open Index file");
+                exit(0);
+            }
+            fread_result = fread(&(lz.search_buffer), sizeof(int), 1, index_file);
+            if (fread_result != 1) {
+                printf("Couldn't open Index file");
+                exit(0);
+            }
+            fread_result = fread(&(lz.lookahead_buffer), sizeof(int), 1, index_file);
+            if (fread_result != 1) {
+                printf("Couldn't open Index file");
+                exit(0);
+            }
 
             int where = ftell(index_file);
             fseek(index_file, 0, SEEK_END);
@@ -98,7 +110,11 @@ int main (int argc, char* argv[]) {
 
             char *compressed_ = new char[size];
             
-            fread(compressed_, sizeof(char), size, index_file);
+            fread_result = fread(compressed_, sizeof(char), size, index_file);
+            if (fread_result != (size_t) size) {
+                printf("Couldn't open Index file");
+                exit(0);
+            }
 
             std::string sstr(compressed_, size);
 

@@ -137,7 +137,11 @@ namespace utils {
 
         char *data = new char[tam + 1];
         data[tam] = '\0';
-        fread(data, 1, tam, file);
+        size_t fread_result = fread(data, 1, tam, file);
+        if (fread_result != (size_t) tam) {
+                printf("Couldn't open file");
+                exit(0);
+        }
         fclose(file);
         return data;
     }

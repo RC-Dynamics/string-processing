@@ -26,7 +26,7 @@ uint_fast16_t LZ77::char_in_ab(char c)
     // return this->ab.find(c);
 }
 
-std::vector<std::vector<uint_fast16_t> > LZ77::build_fsm(std::string pat)
+std::vector<std::vector<uint_fast16_t> > LZ77::build_fsm(std::string const & pat)
 {
     uint_fast16_t m = pat.size();
 
@@ -72,7 +72,7 @@ std::vector<std::vector<uint_fast16_t> > LZ77::build_fsm(std::string pat)
     return delta;
 }
 
-std::pair<uint_fast16_t, uint_fast16_t> LZ77::prefix_match(std::string window, std::string pat)
+std::pair<uint_fast16_t, uint_fast16_t> LZ77::prefix_match(std::string const & window, std::string const & pat)
 {
     std::vector<std::vector<uint_fast16_t> > fsm = this->build_fsm(pat);
 
@@ -125,23 +125,22 @@ std::string LZ77::int_encode(uint_fast16_t x, uint_fast16_t size)
     return std::string(code_size - code.size(), this->ab[0]) + code;
 }
 
-uint_fast16_t LZ77::int_decode(std::string x)
+uint_fast16_t LZ77::int_decode(std::string const & x)
 {
     uint_fast16_t base = (u_int16_t)this->ab.size();
     uint_fast16_t power = 1;
     uint_fast16_t val = 0;
 
-    std::reverse(x.begin(), x.end());
-    for (char c : x)
+    for (int i = (x.size() - 1); i >= 0; i--)
     {
-        val += this->ab.find(c) * power;
+        val += this->ab.find(x[i]) * power;
         power *= base;
     }
 
     return val;
 }
 
-std::string LZ77::encode(std::string text)
+std::string LZ77::encode(std::string const & text)
 {
     std::string W = std::string(this->search_buffer, this->ab[0]) + text;
     uint_fast16_t n = (u_int16_t) W.size();
@@ -164,7 +163,7 @@ std::string LZ77::encode(std::string text)
     return code;
 }
 
-std::string LZ77::decode(std::string code)
+std::string LZ77::decode(std::string const & code)
 {
     std::string text(this->search_buffer, ab[0]);
     uint_fast16_t l = this->ab.size();

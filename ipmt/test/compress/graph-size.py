@@ -29,9 +29,9 @@ plt.plot([5, 100, 1000, 5000], f3, label="LS = 4096 / LL = 256")
 # plt.plot([5, 100, 1000, 5000], f4, label="LS = 4095 / LL = 255")
 
 plt.xticks([5, 100, 1000, 5000])
-plt.title("Comparação do tamamho do arquivo de saída para diferentes tamanho de buffers")
+plt.title("Tamanho do arquivo de saída para diferentes tamanho de buffers")
 plt.ylabel('Tempo do arquivo comprimido em KB')
-plt.xlabel('Tamamnho do arquivo em KB')
+plt.xlabel('Tamanho do arquivo em KB')
 plt.legend(loc='best')
 
 plt.savefig('size.png')

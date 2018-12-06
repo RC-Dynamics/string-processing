@@ -3,6 +3,7 @@
 
 #include <stdint.h>
 #include <string.h>
+#include <string>
 #include <cmath>
 #include <algorithm>
 #include <vector>
@@ -18,7 +19,7 @@ class SArray {
     public:
         SArray();
         void init(char *txt);
-        int search(char* pat);
+        int search(char* pat, bool print = false);
         void build_prefix();
         void build_hash();
         void sa_invert();
@@ -27,7 +28,8 @@ class SArray {
         int lcp_bf(char* X, char* Y);
         void fill_lrlcp(int left, int right);
 
-        int succ2(char* pat);
+        void print_lines(int left, int right);
+        int succ2(char *pat);
         int pred2(char* pat);
         std::vector<int> SArr;
         std::vector<int> Llcp;

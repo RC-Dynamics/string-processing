@@ -39,21 +39,40 @@ int main (int argc, char* argv[]) {
             index_fname = ((arg.txt_files)[0]).substr(0, (arg.txt_files[0]).size()-4) + ".idx";
             index_file = fopen(index_fname.c_str(), "wb");
             if (index_file == NULL) {
-                printf("Couldn't create Index file");
+                printf("Couldn't create Index file\n");
                 exit(0);
             }
             
             fwrite(&(SA.n), sizeof(int), 1, index_file);
             fwrite(&(lz.search_buffer), sizeof(int), 1, index_file);
             fwrite(&(lz.lookahead_buffer), sizeof(int), 1, index_file);
-            
+
+            // for (auto a : SA.SArr)
+            // {
+            //     printf("%d ", a);
+            // }
+            // printf("\n");
+            // for (auto a : SA.Llcp)
+            // {
+            //     printf("%d ", a);
+            // }
+            // printf("\n");
+            // for (auto a : SA.Rlcp)
+            // {
+            //     printf("%d ", a);
+            // }
+            // printf("\n");
+            // std::cout << strlen(SA.txt) << std::endl;
+
             utils::encode(code, SA.SArr);
             utils::encode(code, SA.Llcp);
             utils::encode(code, SA.Rlcp);
 
             code += txt;
-             
+            
             compressed = lz.encode(code);
+            
+            // std::cout << compressed.size() << std::endl;
 
             fwrite(compressed.c_str(), sizeof(char), compressed.size(), index_file);
             fclose(index_file);
@@ -66,7 +85,7 @@ int main (int argc, char* argv[]) {
             index_fname = ((arg.txt_files)[0]).substr(0, (arg.txt_files[0]).size()-4) + ".idx";
             index_file = fopen(index_fname.c_str(), "wb");
             if (index_file == NULL) {
-                printf("Couldn't create Index file");
+                printf("Couldn't create Index file\n");
                 exit(0);
             }
             
@@ -83,23 +102,23 @@ int main (int argc, char* argv[]) {
             
             index_file = fopen(index_fname.c_str(), "rb");
             if (index_file == NULL) {
-                printf("Couldn't open Index file");
+                printf("Couldn't open Index file\n");
                 exit(0);
             }
 
             fread_result = fread(&(SA.n), sizeof(int), 1, index_file);
             if (fread_result != 1) {
-                printf("Couldn't open Index file");
+                printf("Couldn't open Index file\n");
                 exit(0);
             }
             fread_result = fread(&(lz.search_buffer), sizeof(int), 1, index_file);
             if (fread_result != 1) {
-                printf("Couldn't open Index file");
+                printf("Couldn't open Index file\n");
                 exit(0);
             }
             fread_result = fread(&(lz.lookahead_buffer), sizeof(int), 1, index_file);
             if (fread_result != 1) {
-                printf("Couldn't open Index file");
+                printf("Couldn't open Index file\n");
                 exit(0);
             }
 
@@ -108,15 +127,17 @@ int main (int argc, char* argv[]) {
             size = ftell(index_file) - where;
             fseek(index_file, where, SEEK_SET);
 
-            char *compressed_ = new char[size];
+            char *compressed_ = new char[size+1];
             
             fread_result = fread(compressed_, sizeof(char), size, index_file);
             if (fread_result != (size_t) size) {
                 printf("Couldn't open Index file");
                 exit(0);
             }
-
+            compressed_[size] = '\0';
             std::string sstr(compressed_, size);
+
+            // std::cout << sstr.size() << std::endl;
 
             code = lz.decode(sstr);            
         
@@ -124,18 +145,36 @@ int main (int argc, char* argv[]) {
             utils::decode(code, SA.Llcp);
             utils::decode(code, SA.Rlcp);
 
+            // for(auto a : SA.SArr){
+            //     printf("%d ", a);
+            // }
+            // printf("\n");
+            // for (auto a : SA.Llcp)
+            // {
+            //     printf("%d ", a);
+            // }
+            // printf("\n");
+            // for (auto a : SA.Rlcp)
+            // {
+            //     printf("%d ", a);
+            // }
+            // printf("\n");
+
             SA.txt = new char[code.size()+1];
             strcpy(SA.txt, code.c_str());
             SA.txt[code.size()] = '\0';
+            
+            // std::cout << strlen(SA.txt) << std::endl;
 
             for (std::string pat : arg.patterns) {
                 char *p = new char[pat.size() + 1];
                 strcpy(p, pat.c_str());
                 p[pat.size()] = '\0';
+                std::cout << p << std::endl;
                 if(arg.count_only){
                     printf("%s occurs: %d times\n", p, SA.search(p));    
                 } else {
-                    
+                    SA.search(p, true);
                 }
             }
             fclose(index_file);

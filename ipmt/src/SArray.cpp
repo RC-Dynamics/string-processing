@@ -37,7 +37,7 @@ void SArray::init(char *txt){
     
 }
 
-int SArray::search(char *pat){
+int SArray::search(char *pat, bool print){
     int lft = this->succ2(pat);
     int rgt = this->pred2(pat);
     #if DEBUG_SARRAY
@@ -45,8 +45,13 @@ int SArray::search(char *pat){
     #endif
     if(lft > rgt)
         return 0;
-    else
+    else{
+        if (print)
+        {
+            this->print_lines(lft, rgt);
+        }
         return rgt - lft + 1;
+    }
 
 }
 
@@ -277,7 +282,35 @@ void SArray::build_hash() {
   }
 }
 
+void SArray::print_lines(int lft, int rgt){
+    for (int i = lft; i <= rgt; i++)
+    {
+        int match_start = this->SArr[i];
+        int line_start = match_start;
 
+        while (line_start > 0)
+        {
+            if (this->txt[line_start] == '\n')
+            {
+                line_start++;
+                break;
+            }
+            line_start--;
+        }
+        int line_end = match_start;
+        while (line_end < this->n)
+        {
+            if (this->txt[line_end] == '\n')
+            {
+                line_end--;
+                break;
+            }
+            line_end++;
+        }
+        std::string line(this->txt + line_start, this->txt + line_end + 1);
+        printf("%s\n", line.c_str());
+    }
+}
 
 #if DEBUG_SARRAY
 char text[200] = "hello world hell llo";

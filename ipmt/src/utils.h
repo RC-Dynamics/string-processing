@@ -146,16 +146,6 @@ namespace utils {
         return data;
     }
 
-    // char* writeIndex(){
-
-    //     return;
-    // }
-
-
-//    char* readIndex(){
-//         return ;
-//     }
-
     void encode(std::string &dest, std::vector<int> &src) {
         int n = (int)src.size();
         for (int i = 0; i < n; ++i) {

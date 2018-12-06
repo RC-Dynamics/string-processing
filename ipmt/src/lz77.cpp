@@ -98,7 +98,7 @@ std::pair<uint_fast16_t, uint_fast16_t> LZ77::prefix_match(std::string const & w
             pos = i - cur + 1;
         }
     }
-    maxlen = std::min(pat.size() - 1, maxlen);
+    maxlen = fmin(pat.size() - 1, maxlen);
     return std::make_pair(pos, maxlen);
 }
 
@@ -150,9 +150,9 @@ std::string LZ77::encode(std::string const & text)
     std::string code;
     while (j < n) {
         #if DEBUG_LZ77
-            std::cout << "< " << W.substr(j - this->search_buffer, this->search_buffer) << " | " << W.substr(j, std::min(n, j + this->lookahead_buffer) - j) << " >" << std::endl;
+            std::cout << "< " << W.substr(j - this->search_buffer, this->search_buffer) << " | " << W.substr(j, fmin(n, j + this->lookahead_buffer) - j) << " >" << std::endl;
         #endif
-        pos_len = this->prefix_match(W.substr(j - this->search_buffer, std::min(n, j + this->lookahead_buffer) - (j - this->search_buffer)), W.substr(j, std::min(n, j + this->lookahead_buffer) - j));
+        pos_len = this->prefix_match(W.substr(j - this->search_buffer, fmin(n, j + this->lookahead_buffer) - (j - this->search_buffer)), W.substr(j, fmin(n, j + this->lookahead_buffer) - j));
         #if DEBUG_LZ77
             std::cout << "p: " << pos_len.first << " l: " << pos_len.second << std::endl;
         #endif

@@ -18,22 +18,22 @@
 class LZ77
 {
     public:
-        LZ77(uint_fast16_t search_buffer_size = 512, uint_fast16_t lookahead_buffer_size = 128);
+        LZ77(uint_fast64_t search_buffer_size = 512, uint_fast64_t lookahead_buffer_size = 128);
 
         std::string encode(std::string const & text);
         std::string decode(std::string const & code);
         
-        void set_buffer_size(uint_fast16_t search_buffer_size, uint_fast16_t lookahead_buffer_size);
+        void set_buffer_size(uint_fast64_t search_buffer_size, uint_fast64_t lookahead_buffer_size);
 
-        std::string int_encode(uint_fast16_t x, uint_fast16_t size);
-        uint_fast16_t int_decode(std::string const & x);
+        std::string int_encode(uint_fast64_t x, uint_fast64_t size);
+        uint_fast64_t int_decode(std::string const & x);
         
         int search_buffer = 0, lookahead_buffer = 0;
 
       private:
-        uint_fast16_t char_in_ab(char c);
-        std::vector<std::vector<uint_fast16_t> > build_fsm(std::string const & pat);
-        std::pair<uint_fast16_t, uint_fast16_t> prefix_match(std::string const & window, std::string const & pat);
+        uint_fast64_t char_in_ab(char c);
+        std::vector<std::vector<uint_fast64_t> > build_fsm(std::string const & pat);
+        std::pair<uint_fast64_t, uint_fast64_t> prefix_match(std::string const & window, std::string const & pat);
 
         std::string ab;
 };

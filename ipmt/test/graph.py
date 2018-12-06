@@ -28,13 +28,13 @@ f3.append(np.mean(df3[2]))
 f3.append(np.mean(df3[3]))
 plt.plot([5, 100, 1000, 5000], f3, label="LS = 4096 / LL = 256")
 
-df4 = pd.read_csv('compress-4095-255.csv', header=None)
-f4 = []
-f4.append(np.mean(df4[0]))
-f4.append(np.mean(df4[1]))
-f4.append(np.mean(df4[2]))
-f4.append(np.mean(df4[3]))
-plt.plot([5, 100, 1000, 5000], f4, label="LS = 4095 / LL = 255")
+# df4 = pd.read_csv('compress-4095-255.csv', header=None)
+# f4 = []
+# f4.append(np.mean(df4[0]))
+# f4.append(np.mean(df4[1]))
+# f4.append(np.mean(df4[2]))
+# f4.append(np.mean(df4[3]))
+# plt.plot([5, 100, 1000, 5000], f4, label="LS = 4095 / LL = 255")
 
 plt.xticks([5, 100, 1000, 5000])
 plt.title("Comparação de tempo execução para diferentes tamanho de buffers")

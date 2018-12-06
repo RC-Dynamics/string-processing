@@ -21,12 +21,12 @@ f3.append(1008.075)
 f3.append(5312.330)
 plt.plot([5, 100, 1000, 5000], f3, label="LS = 4096 / LL = 256")
 
-f4 = []
-f4.append(0.470)
-f4.append(84.255)
-f4.append(1008.125)
-f4.append(5312.560)
-plt.plot([5, 100, 1000, 5000], f4, label="LS = 4095 / LL = 255")
+# f4 = []
+# f4.append(0.470)
+# f4.append(84.255)
+# f4.append(1008.125)
+# f4.append(5312.560)
+# plt.plot([5, 100, 1000, 5000], f4, label="LS = 4095 / LL = 255")
 
 plt.xticks([5, 100, 1000, 5000])
 plt.title("Comparação do tamamho do arquivo de saída para diferentes tamanho de buffers")

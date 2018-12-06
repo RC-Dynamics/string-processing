@@ -4,12 +4,12 @@ files=`cat files.txt`
 
 for file in $files
 do
-    result="result-compress-$file.csv"
+    result="compress-$file-4095-255.csv"
     `rm $result && touch $result`
-    `echo "$result"`
-    for i in {1..2};
+    # `echo "$result"`
+    for i in `seq 10`;
     do
-        `echo "Iteration: $i"`
+        # `echo "Iteration: $i"`
         STARTTIME=`date +%s.%N`
         count=`./../bin/ipmt -z ../data/$file`
         ENDTIME=`date +%s.%N`

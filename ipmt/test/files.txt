@@ -1,3 +1,4 @@
-proteins.50MB.txt
-proteins.100MB.txt
-proteins.200MB.txt
+proteins.5KB.txt
+proteins.100KB.txt
+proteins.1MB.txt
+proteins.5MB.txt

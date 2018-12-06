@@ -3,9 +3,8 @@
 
 #include "utils.h"
 
-
-#define LS 512
-#define LL 128
+#define LS 4096
+#define LL 256
 
 int main (int argc, char* argv[]) {
    utils::argmnts arg;

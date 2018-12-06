@@ -37,9 +37,9 @@ void SArray::init(char *txt){
     
 }
 
-int SArray::search(char *pat, bool print){
-    int lft = this->succ2(pat);
-    int rgt = this->pred2(pat);
+long long int SArray::search(char *pat, bool print){
+    long long int lft = this->succ2(pat);
+    long long int rgt = this->pred2(pat);
     #if DEBUG_SARRAY
     std::cout << lft << " " << rgt << std::endl;
     #endif
@@ -55,20 +55,20 @@ int SArray::search(char *pat, bool print){
 
 }
 
-int SArray::succ2(char* pat){
-    int m = strlen(pat);
-    int L = this->lcp_bf(pat, this->txt + this->SArr[0]);
-    int R = this->lcp_bf(pat, this->txt + this->SArr[this->n - 1]);
+long long int SArray::succ2(char* pat){
+    long long int m = strlen(pat);
+    long long int L = this->lcp_bf(pat, this->txt + this->SArr[0]);
+    long long int R = this->lcp_bf(pat, this->txt + this->SArr[this->n - 1]);
     if(R < m && this->txt[this->SArr[n-1] + R] < pat[R]) // lt_m
         return n;
     else if(L == m || this->txt[this->SArr[0] + L] > pat[L]) // leq_m
         return 0;
     else {
-        int left = 0;
-        int right = this->n -1;
+        long long int left = 0;
+        long long int right = this->n -1;
         while(right - left > 1){
-            int H = -1;
-            int h = (left+right)/2;
+            long long int H = -1;
+            long long int h = (left+right)/2;
             // #ifdef DEBUG_SARRAY
             // std::cout << "l= " << left << "  suf_l: " << this->txt[this->SArr[left]] << std::endl;
             // std::cout << "h= " << h << "  suf_h: " << this->txt[this->SArr[h]] << std::endl;
@@ -115,10 +115,10 @@ int SArray::succ2(char* pat){
     }
 }
 
-int SArray::pred2(char* pat){
-    int m = strlen(pat);
-    int L = this->lcp_bf(pat, this->txt + this->SArr[0]);
-    int R = this->lcp_bf(pat, this->txt + this->SArr[this->n - 1]);
+long long int SArray::pred2(char* pat){
+    long long int m = strlen(pat);
+    long long int L = this->lcp_bf(pat, this->txt + this->SArr[0]);
+    long long int R = this->lcp_bf(pat, this->txt + this->SArr[this->n - 1]);
     if(R == m || this->txt[this->SArr[n-1] + R] < pat[R]){ // lt_m
         return n - 1;
     }
@@ -126,11 +126,11 @@ int SArray::pred2(char* pat){
         return -1;
     }
     else {
-        int left = 0;
-        int right = this->n -1;
+        long long int left = 0;
+        long long int right = this->n -1;
         while(right - left > 1){
-            int H = -1;
-            int h = (left+right)/2;
+            long long int H = -1;
+            long long int h = (left+right)/2;
             
             // #ifdef DEBUG_SARRAY
             // std::cout << "l= " << left << "  suf_l: " << this->txt[this->SArr[left]] << std::endl;
@@ -179,24 +179,24 @@ int SArray::pred2(char* pat){
 }
 
 void SArray::build_prefix(){
-    this->P.assign(l + 1, std::vector<int>(n, -1));
-    for(int i = 0; i < this->n; i++) {
+    this->P.assign(l + 1, std::vector<long long int>(n, -1));
+    for(long long int i = 0; i < this->n; i++) {
       unsigned char ch = txt[i];
       this->P[0][i] = this->hash[ch];
     }
-    for(int k = 1; k < l+1; k++){
-        int j = pow(2, k-1);
-        std::vector<std::tuple<int, int, int> > V;
-        for(int i = 0; i < n; i++) {
+    for(long long int k = 1; k < l+1; k++){
+        long long int j = pow(2, k-1);
+        std::vector<std::tuple<long long int, long long int, long long int> > V;
+        for(long long int i = 0; i < n; i++) {
             if(i + j >= n)
                 V.push_back({this->P[k - 1][i], -1, i});
             else
                 V.push_back({this->P[k - 1][i], this->P[k - 1][i + j], i});
         }
         std::sort(V.begin(), V.end());
-        int r = 0;
+        long long int r = 0;
         this->P[k][std::get<2>(V[0])] = r;
-        for(int i = 1; i < n; i++) {
+        for(long long int i = 1; i < n; i++) {
             if(std::get<0>(V[i]) != std::get<0>(V[i - 1]) || std::get<1>(V[i]) != std::get<1>(V[i - 1])) {
                 r += 1;
             }
@@ -204,7 +204,7 @@ void SArray::build_prefix(){
         }
         #if DEBUG_SARRAY
         std::cout << "Pk: ";
-        for(int i = 0; i < n; i++) {
+        for(long long int i = 0; i < n; i++) {
             std::cout << this->P[k][i] << " ";
         }
         std::cout << std::endl;
@@ -214,7 +214,7 @@ void SArray::build_prefix(){
 
 void SArray::sa_invert() {
     this->SArr.assign(n, -1);
-    for(int i = 0; i < n; ++i) {
+    for(long long int i = 0; i < n; ++i) {
       this->SArr[this->P[this->l][i]] = i;
       
     }
@@ -226,9 +226,9 @@ void SArray::lr_lcp() {
     fill_lrlcp(0, this->n - 1);
 }
 
-void SArray::fill_lrlcp(int left, int right) {
+void SArray::fill_lrlcp(long long int left, long long int right) {
     if(right - left > 1) {
-      int h = (left + right)/2;
+      long long int h = (left + right)/2;
       Llcp[h] = lcp_p(SArr[left], SArr[h]);
       Rlcp[h] = lcp_p(SArr[right], SArr[h]);
       fill_lrlcp(left, h);
@@ -236,24 +236,24 @@ void SArray::fill_lrlcp(int left, int right) {
     }
 }
 
-int SArray::lcp_bf(char* X, char* Y){
-    int m = strlen(X);
-    int n = strlen(Y);
-    int i = 0;
+long long int SArray::lcp_bf(char* X, char* Y){
+    long long int m = strlen(X);
+    long long int n = strlen(Y);
+    long long int i = 0;
     while (i < m && i < n && X[i]==Y[i])
         i+=1;
     return i;
 }
 
-int SArray::lcp_p(int i, int j) {
+long long int SArray::lcp_p(long long int i, long long int j) {
     #if DEBUG_SARRAY
     // std::cout << "computing lcp i= " << i <<  " j= "  << j << std::endl;
     #endif
-    int lcp = 0;
+    long long int lcp = 0;
     if(i == j)
       return (n - i);
     else {
-        for(int k = this->l; k >= 0; k--) {
+        for(long long int k = this->l; k >= 0; k--) {
             if(i > this->n || j > this->n)
                 break;
             if(P[k][i] == P[k][j]) {
@@ -268,25 +268,25 @@ int SArray::lcp_p(int i, int j) {
 
 
 void SArray::build_hash() {
-  std::vector<int> count(256, 0);
-  for (int i = 0; i < n; ++i) {
+  std::vector<long long int> count(256, 0);
+  for (long long int i = 0; i < n; ++i) {
     unsigned char ch = txt[i];
     count[ch] = 1;
   }
-  for (int i = 1; i < 256; ++i) {
+  for (long long int i = 1; i < 256; ++i) {
     count[i] += count[i - 1];
   }
-  for (int i = 0; i < n; ++i) {
+  for (long long int i = 0; i < n; ++i) {
     unsigned char ch = txt[i];
     this->hash[ch] = count[ch] - 1;
   }
 }
 
-void SArray::print_lines(int lft, int rgt){
-    for (int i = lft; i <= rgt; i++)
+void SArray::print_lines(long long int lft, long long int rgt){
+    for (long long int i = lft; i <= rgt; i++)
     {
-        int match_start = this->SArr[i];
-        int line_start = match_start;
+        long long int match_start = this->SArr[i];
+        long long int line_start = match_start;
 
         while (line_start > 0)
         {
@@ -297,7 +297,7 @@ void SArray::print_lines(int lft, int rgt){
             }
             line_start--;
         }
-        int line_end = match_start;
+        long long int line_end = match_start;
         while (line_end < this->n)
         {
             if (this->txt[line_end] == '\n')
@@ -315,11 +315,11 @@ void SArray::print_lines(int lft, int rgt){
 #if DEBUG_SARRAY
 char text[200] = "hello world hell llo";
 char patt[100] = "hello";
-int main(){
+long long int main(){
     // scanf(" %s", text);
     SArray suffixArray(text);
     // scanf(" %s", patt);
-    int idx = suffixArray.search(patt);
+    long long int idx = suffixArray.search(patt);
     std::cout << "Found: " << idx << std::endl;
 
 }

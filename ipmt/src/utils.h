@@ -146,9 +146,9 @@ namespace utils {
         return data;
     }
 
-    void encode(std::string &dest, std::vector<int> &src) {
-        int n = (int)src.size();
-        for (int i = 0; i < n; ++i) {
+    void encode(std::string &dest, std::vector<long long int> &src) {
+        long long int n = (long long int)src.size();
+        for (long long int i = 0; i < n; ++i) {
             dest += std::to_string(src[i]);
             dest += "$";
         }
@@ -156,12 +156,12 @@ namespace utils {
         
     }
 
-    void decode(std::string &src, std::vector<int> &dest) {
-        int n = (int)src.size();
+    void decode(std::string &src, std::vector<long long int> &dest) {
+        long long int n = (long long int)src.size();
         std::string temp;
-        for (int i = 0; i < n; ++i) {
+        for (long long int i = 0; i < n; ++i) {
             if(src[i] == '$'){
-                dest.push_back(stoi(temp));
+                dest.push_back(stoll(temp));
                 temp.clear();
             } else if (src[i] == '#'){
                 src = src.substr(i+1);
@@ -171,6 +171,5 @@ namespace utils {
                 temp += src[i];           
         }
     }
-}
-
+}   
 

@@ -42,26 +42,9 @@ int main (int argc, char* argv[]) {
                 exit(0);
             }
             
-            fwrite(&(SA.n), sizeof(int), 1, index_file);
-            fwrite(&(lz.search_buffer), sizeof(int), 1, index_file);
-            fwrite(&(lz.lookahead_buffer), sizeof(int), 1, index_file);
-
-            // for (auto a : SA.SArr)
-            // {
-            //     printf("%d ", a);
-            // }
-            // printf("\n");
-            // for (auto a : SA.Llcp)
-            // {
-            //     printf("%d ", a);
-            // }
-            // printf("\n");
-            // for (auto a : SA.Rlcp)
-            // {
-            //     printf("%d ", a);
-            // }
-            // printf("\n");
-            // std::cout << strlen(SA.txt) << std::endl;
+            fwrite(&(SA.n), sizeof(long long int), 1, index_file);
+            fwrite(&(lz.search_buffer), sizeof(long long int), 1, index_file);
+            fwrite(&(lz.lookahead_buffer), sizeof(long long int), 1, index_file);
 
             utils::encode(code, SA.SArr);
             utils::encode(code, SA.Llcp);
@@ -70,8 +53,6 @@ int main (int argc, char* argv[]) {
             code += txt;
             
             compressed = lz.encode(code);
-            
-            // std::cout << compressed.size() << std::endl;
 
             fwrite(compressed.c_str(), sizeof(char), compressed.size(), index_file);
             fclose(index_file);
@@ -105,17 +86,17 @@ int main (int argc, char* argv[]) {
                 exit(0);
             }
 
-            fread_result = fread(&(SA.n), sizeof(int), 1, index_file);
+            fread_result = fread(&(SA.n), sizeof(long long int), 1, index_file);
             if (fread_result != 1) {
                 printf("Couldn't open Index file\n");
                 exit(0);
             }
-            fread_result = fread(&(lz.search_buffer), sizeof(int), 1, index_file);
+            fread_result = fread(&(lz.search_buffer), sizeof(long long int), 1, index_file);
             if (fread_result != 1) {
                 printf("Couldn't open Index file\n");
                 exit(0);
             }
-            fread_result = fread(&(lz.lookahead_buffer), sizeof(int), 1, index_file);
+            fread_result = fread(&(lz.lookahead_buffer), sizeof(long long int), 1, index_file);
             if (fread_result != 1) {
                 printf("Couldn't open Index file\n");
                 exit(0);
@@ -136,42 +117,22 @@ int main (int argc, char* argv[]) {
             compressed_[size] = '\0';
             std::string sstr(compressed_, size);
 
-            // std::cout << sstr.size() << std::endl;
-
             code = lz.decode(sstr);            
-        
+
             utils::decode(code, SA.SArr);
             utils::decode(code, SA.Llcp);
             utils::decode(code, SA.Rlcp);
 
-            // for(auto a : SA.SArr){
-            //     printf("%d ", a);
-            // }
-            // printf("\n");
-            // for (auto a : SA.Llcp)
-            // {
-            //     printf("%d ", a);
-            // }
-            // printf("\n");
-            // for (auto a : SA.Rlcp)
-            // {
-            //     printf("%d ", a);
-            // }
-            // printf("\n");
-
             SA.txt = new char[code.size()+1];
             strcpy(SA.txt, code.c_str());
             SA.txt[code.size()] = '\0';
-            
-            // std::cout << strlen(SA.txt) << std::endl;
 
             for (std::string pat : arg.patterns) {
                 char *p = new char[pat.size() + 1];
                 strcpy(p, pat.c_str());
                 p[pat.size()] = '\0';
-                std::cout << p << std::endl;
                 if(arg.count_only){
-                    printf("%s occurs: %d times\n", p, SA.search(p));    
+                    printf("%s occurs: %lld times\n", p, SA.search(p));    
                 } else {
                     SA.search(p, true);
                 }
@@ -179,7 +140,5 @@ int main (int argc, char* argv[]) {
             fclose(index_file);
             break;
     }
-
-
     return 0;
 }

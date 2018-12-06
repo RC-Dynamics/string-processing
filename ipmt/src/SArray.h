@@ -19,28 +19,28 @@ class SArray {
     public:
         SArray();
         void init(char *txt);
-        int search(char* pat, bool print = false);
+        long long int search(char* pat, bool print = false);
         void build_prefix();
         void build_hash();
         void sa_invert();
         void lr_lcp();
-        int lcp_p(int i, int j);
-        int lcp_bf(char* X, char* Y);
-        void fill_lrlcp(int left, int right);
+        long long int lcp_p(long long int i, long long int j);
+        long long int lcp_bf(char* X, char* Y);
+        void fill_lrlcp(long long int left, long long int right);
 
-        void print_lines(int left, int right);
-        int succ2(char *pat);
-        int pred2(char* pat);
-        std::vector<int> SArr;
-        std::vector<int> Llcp;
-        std::vector<int> Rlcp;
-        int n = 0;
-        int l = 0;
+        void print_lines(long long int left, long long int right);
+        long long int succ2(char *pat);
+        long long int pred2(char* pat);
+        std::vector<long long int> SArr;
+        std::vector<long long int> Llcp;
+        std::vector<long long int> Rlcp;
+        long long int n = 0;
+        long long int l = 0;
         char *txt;
 
       private:
-        std::vector<std::vector<int> > P;
-        int hash[256];
+        std::vector<std::vector<long long int> > P;
+        long long int hash[256];
 
 };
 

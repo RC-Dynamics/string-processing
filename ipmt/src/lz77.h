@@ -32,8 +32,8 @@ class LZ77
 
       private:
         uint_fast16_t char_in_ab(char c);
-        std::vector<std::vector<uint_fast16_t> > build_fsm(std::string const & pat);
-        std::pair<uint_fast16_t, uint_fast16_t> prefix_match(std::string const & window, std::string const & pat);
+        std::vector<std::vector<uint_fast16_t>> build_fsm(std::string const &window, uint_fast16_t p_start, uint_fast16_t p_end);
+        std::pair<uint_fast16_t, uint_fast16_t> prefix_match(std::string const &window, uint_fast16_t w_start, uint_fast16_t w_end, uint_fast16_t p_start, uint_fast16_t p_end);
 
         std::string ab;
 };

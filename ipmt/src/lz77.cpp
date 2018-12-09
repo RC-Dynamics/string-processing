@@ -26,9 +26,9 @@ uint_fast16_t LZ77::char_in_ab(char c)
     // return this->ab.find(c);
 }
 
-std::vector<std::vector<uint_fast16_t> > LZ77::build_fsm(std::string const & pat)
+std::vector<std::vector<uint_fast16_t>> LZ77::build_fsm(std::string const &window, uint_fast16_t p_start, uint_fast16_t p_end)
 {
-    uint_fast16_t m = pat.size();
+    uint_fast16_t m = (p_end - p_start);
     uint_fast16_t l = this->ab.size();
 
     std::vector<std::vector<uint_fast16_t> > delta;
@@ -38,7 +38,7 @@ std::vector<std::vector<uint_fast16_t> > LZ77::build_fsm(std::string const & pat
     while (l--) {
         temp.push_back(0);
     }
-    temp[this->char_in_ab(pat[0])] = 1;
+    temp[this->char_in_ab(window[p_start])] = 1;
     delta.push_back(temp);
 
     uint_fast16_t brd = 0;
@@ -47,8 +47,8 @@ std::vector<std::vector<uint_fast16_t> > LZ77::build_fsm(std::string const & pat
         for (char c : this->ab) {
             temp.push_back(delta[brd][this->char_in_ab(c)]);
         }
-        temp[this->char_in_ab(pat[i])] = i + 1;
-        brd = delta[brd][this->char_in_ab(pat[i])];
+        temp[this->char_in_ab(window[p_start + i])] = i + 1;
+        brd = delta[brd][this->char_in_ab(window[p_start + i])];
 
         delta.push_back(temp);
     }
@@ -60,7 +60,7 @@ std::vector<std::vector<uint_fast16_t> > LZ77::build_fsm(std::string const & pat
     delta.push_back(temp);
 
     #if DEBUG_LZ77
-        std::cout << "delta pat = " << pat << std::endl;
+        std::cout << "delta pat = " << window.substr(p_start, p_end) << std::endl;
         for (char c : this->ab) {
             std::cout << c << " :";
             for (uint_fast16_t i = 0; i < m; i++) {
@@ -73,19 +73,20 @@ std::vector<std::vector<uint_fast16_t> > LZ77::build_fsm(std::string const & pat
     return delta;
 }
 
-std::pair<uint_fast16_t, uint_fast16_t> LZ77::prefix_match(std::string const & window, std::string const & pat)
+std::pair<uint_fast16_t, uint_fast16_t> LZ77::prefix_match(std::string const &window, uint_fast16_t w_start, uint_fast16_t w_end, uint_fast16_t p_start, uint_fast16_t p_end)
 {
-    std::vector<std::vector<uint_fast16_t> > fsm = this->build_fsm(pat);
+    std::vector<std::vector<uint_fast16_t> > fsm = this->build_fsm(window, p_start, p_end);
 
     uint_fast16_t maxlen = 0;
     uint_fast16_t cur = 0;
     uint_fast16_t pos = 0;
 
-    uint_fast16_t n = (uint_fast16_t) window.size();
-    uint_fast16_t ls = n - pat.size();
+    uint_fast16_t p_size = p_end - p_start;
+    uint_fast16_t n = w_end - w_start;
+    uint_fast16_t ls = n - p_size;
 
     for (uint_fast16_t i = 0; i < n; i++) {
-        cur = fsm[cur][this->char_in_ab(window[i])];
+        cur = fsm[cur][this->char_in_ab(window[w_start + i])];
         #if DEBUG_LZ77
             std::cout << "cur: " << cur;
             std::cout << " maxlen: " << maxlen;
@@ -98,7 +99,7 @@ std::pair<uint_fast16_t, uint_fast16_t> LZ77::prefix_match(std::string const & w
             pos = i - cur + 1;
         }
     }
-    maxlen = fmin(pat.size() - 1, maxlen);
+    maxlen = fmin(p_size - 1, maxlen);
     return std::make_pair(pos, maxlen);
 }
 
@@ -152,7 +153,8 @@ std::string LZ77::encode(std::string const & text)
         #if DEBUG_LZ77
             std::cout << "< " << W.substr(j - this->search_buffer, this->search_buffer) << " | " << W.substr(j, fmin(n, j + this->lookahead_buffer) - j) << " >" << std::endl;
         #endif
-        pos_len = this->prefix_match(W.substr(j - this->search_buffer, fmin(n, j + this->lookahead_buffer) - (j - this->search_buffer)), W.substr(j, fmin(n, j + this->lookahead_buffer) - j));
+        // pos_len = this->prefix_match(W.substr(j - this->search_buffer, fmin(n, j + this->lookahead_buffer) - (j - this->search_buffer)), W.substr(j, fmin(n, j + this->lookahead_buffer) - j));
+        pos_len = this->prefix_match(W, (j - this->search_buffer), fmin(n, j + this->lookahead_buffer), j, fmin(n, j + this->lookahead_buffer));
         #if DEBUG_LZ77
             std::cout << "p: " << pos_len.first << " l: " << pos_len.second << std::endl;
         #endif

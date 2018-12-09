@@ -127,7 +127,7 @@ namespace utils {
     char* readFile(const char* f){
         FILE *file = fopen(f, "rb");
         if (file == NULL) {
-            printf("Couldn't create file: %s.", f);
+            printf("Couldn't read file: %s.", f);
             exit(0);
         }
 
@@ -139,7 +139,7 @@ namespace utils {
         data[tam] = '\0';
         size_t fread_result = fread(data, 1, tam, file);
         if (fread_result != (size_t) tam) {
-                printf("Couldn't open file");
+                printf("Couldn't read file");
                 exit(0);
         }
         fclose(file);

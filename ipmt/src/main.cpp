@@ -70,8 +70,8 @@ int main (int argc, char* argv[]) {
             }
             
             code += txt;
-             
-            compressed = (code);
+
+            compressed = lz.encode(code);
 
             fwrite(compressed.c_str(), sizeof(char), compressed.size(), index_file);
             fclose(index_file);

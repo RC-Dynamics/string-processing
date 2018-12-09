@@ -1,0 +1,4 @@
+proteins.5KB.idx
+proteins.100KB.idx
+proteins.1MB.idx
+proteins.5MB.idx

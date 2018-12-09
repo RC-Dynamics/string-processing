@@ -71,7 +71,7 @@ int main (int argc, char* argv[]) {
             
             code += txt;
              
-            compressed = lz.encode(code);
+            compressed = (code);
 
             fwrite(compressed.c_str(), sizeof(char), compressed.size(), index_file);
             fclose(index_file);

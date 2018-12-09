@@ -81,11 +81,19 @@ namespace utils {
         } else {
             if (arg->pattern_file == nullptr)
             {
+                if(optind >= argc-1){
+                    printf("Invalid option selected!\n");
+                    exit(0);
+                }
                 arg->patterns.push_back(argv[optind]);
             }
             else
             {
                 std::ifstream f(arg->pattern_file);
+                if (!f.is_open()){
+                    printf("Invalid option selected!\n");
+                    exit(0);
+                }
                 std::string str;
                 while (getline(f, str))
                 {

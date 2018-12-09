@@ -43,8 +43,8 @@ int main (int argc, char* argv[]) {
             }
             
             fwrite(&(SA.n), sizeof(long long int), 1, index_file);
-            fwrite(&(lz.search_buffer), sizeof(long long int), 1, index_file);
-            fwrite(&(lz.lookahead_buffer), sizeof(long long int), 1, index_file);
+            // fwrite(&(lz.search_buffer), sizeof(long long int), 1, index_file);
+            // fwrite(&(lz.lookahead_buffer), sizeof(long long int), 1, index_file);
 
             utils::encode(code, SA.SArr);
             utils::encode(code, SA.Llcp);
@@ -91,16 +91,16 @@ int main (int argc, char* argv[]) {
                 printf("Couldn't open Index file\n");
                 exit(0);
             }
-            fread_result = fread(&(lz.search_buffer), sizeof(long long int), 1, index_file);
-            if (fread_result != 1) {
-                printf("Couldn't open Index file\n");
-                exit(0);
-            }
-            fread_result = fread(&(lz.lookahead_buffer), sizeof(long long int), 1, index_file);
-            if (fread_result != 1) {
-                printf("Couldn't open Index file\n");
-                exit(0);
-            }
+            // fread_result = fread(&(lz.search_buffer), sizeof(long long int), 1, index_file);
+            // if (fread_result != 1) {
+            //     printf("Couldn't open Index file\n");
+            //     exit(0);
+            // }
+            // fread_result = fread(&(lz.lookahead_buffer), sizeof(long long int), 1, index_file);
+            // if (fread_result != 1) {
+            //     printf("Couldn't open Index file\n");
+            //     exit(0);
+            // }
 
             int where = ftell(index_file);
             fseek(index_file, 0, SEEK_END);

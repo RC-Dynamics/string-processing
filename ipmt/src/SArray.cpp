@@ -41,7 +41,7 @@ long long int SArray::search(char *pat, bool print){
     long long int lft = this->succ2(pat);
     long long int rgt = this->pred2(pat);
     #if DEBUG_SARRAY
-    std::cout << lft << " " << rgt << std::endl;
+        std::cout << lft << " " << rgt << std::endl;
     #endif
     if(lft > rgt)
         return 0;
@@ -70,9 +70,9 @@ long long int SArray::succ2(char* pat){
             long long int H = -1;
             long long int h = (left+right)/2;
             // #ifdef DEBUG_SARRAY
-            // std::cout << "l= " << left << "  suf_l: " << this->txt[this->SArr[left]] << std::endl;
-            // std::cout << "h= " << h << "  suf_h: " << this->txt[this->SArr[h]] << std::endl;
-            // std::cout << "r= " << right << "  suf_r: " << this->txt[this->SArr[right]] << std::endl;
+            //     std::cout << "l= " << left << "  suf_l: " << this->txt[this->SArr[left]] << std::endl;
+            //     std::cout << "h= " << h << "  suf_h: " << this->txt[this->SArr[h]] << std::endl;
+            //     std::cout << "r= " << right << "  suf_r: " << this->txt[this->SArr[right]] << std::endl;
             // #endif
 
             if(L >= R){
@@ -133,9 +133,9 @@ long long int SArray::pred2(char* pat){
             long long int h = (left+right)/2;
             
             // #ifdef DEBUG_SARRAY
-            // std::cout << "l= " << left << "  suf_l: " << this->txt[this->SArr[left]] << std::endl;
-            // std::cout << "h= " << h << "  suf_h: " << this->txt[this->SArr[h]] << std::endl;
-            // std::cout << "r= " << right << "  suf_r: " << this->txt[this->SArr[right]] << std::endl;
+                // std::cout << "l= " << left << "  suf_l: " << this->txt[this->SArr[left]] << std::endl;
+                // std::cout << "h= " << h << "  suf_h: " << this->txt[this->SArr[h]] << std::endl;
+                // std::cout << "r= " << right << "  suf_r: " << this->txt[this->SArr[right]] << std::endl;
             // #endif
 
             if(L >= R){
@@ -188,11 +188,14 @@ void SArray::build_prefix(){
         long long int j = pow(2, k-1);
         std::vector<std::tuple<long long int, long long int, long long int> > V;
         for(long long int i = 0; i < n; i++) {
-            if(i + j >= n)
-                V.push_back({this->P[k - 1][i], -1, i});
-            else
-                V.push_back({this->P[k - 1][i], this->P[k - 1][i + j], i});
-        }
+            if(i + j >= n) {
+                std::tuple<long long int, long long int, long long int> t(this->P[k - 1][i], -1, i);
+                V.push_back(t);
+            }                
+            else{
+                std::tuple<long long int, long long int, long long int> t(this->P[k - 1][i], this->P[k - 1][i + j], i);
+                V.push_back(t);
+}        }
         std::sort(V.begin(), V.end());
         long long int r = 0;
         this->P[k][std::get<2>(V[0])] = r;
@@ -203,12 +206,12 @@ void SArray::build_prefix(){
             this->P[k][std::get<2>(V[i])] = r;
         }
         #if DEBUG_SARRAY
-        std::cout << "Pk: ";
-        for(long long int i = 0; i < n; i++) {
-            std::cout << this->P[k][i] << " ";
-        }
-        std::cout << std::endl;
-        #endif
+            std::cout << "Pk: ";
+            for(long long int i = 0; i < n; i++) {
+                std::cout << this->P[k][i] << " ";
+            }
+            std::cout << std::endl;
+            #endif
     }   
 }
 
